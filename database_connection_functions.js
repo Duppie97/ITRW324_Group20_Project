@@ -23,7 +23,7 @@ function useDB()
   var method = "";
 
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GETFIL", "http://localhost/api.php/" + table + key , false);
+  xhttp.open(method, "http://localhost/api.php/" + table + key , false);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(JSON.stringify(myArr) + columns + crit);
   var response = JSON.parse(xhttp.responseText);

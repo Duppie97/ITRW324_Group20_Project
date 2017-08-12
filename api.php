@@ -8,6 +8,7 @@ $txt = file_get_contents('php://input');
 $arrParam = explode('&', $txt);
 $input = json_decode($arrParam[0],true);
 $columns2 = $arrParam[1];
+$filter = $arrParam[2];
 
 
 
@@ -18,30 +19,14 @@ fwrite($myfile, $arrParam[1]);
 $link = new mysqli("localhost", "root", "", "324projek");
 mysqli_set_charset($link,'utf8');
 
-if ($link->connect_error) {
-    echo "<script>
-  alert('Connection to the database failed.');
-  window.location.href='admin/ahm/panel';
-  </script>";
-} 
-
-
-
  
 // retrieve the table and key from the pathS
 $table = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
 $key = array_shift($request)+0;
 
 
-$myfile = fopen("newfile4.txt", "w") or die("Unable to open file!");
-fwrite($myfile, $key);
-
-echo "<script>
-alert('$input');
-alert('$table');
-alert('$key');
-</script>";
-
+$myfile2 = fopen("newfile4.txt", "w") or die("Unable to open file!");
+fwrite($myfile2, $key);
  
 // escape the columns and values from the input object
 $columns = preg_replace('/[^a-z0-9_]+/i','',array_keys($input));
@@ -49,43 +34,36 @@ $values = array_map(function ($value) use ($link) {
   if ($value===null) return null;
   return mysqli_real_escape_string($link,(string)$value);
 },array_values($input));
- 
-echo "<script>
-alert('$columns[0]');
-alert('$values[0]');
-alert('$value');
-</script>";
+
 
 // build the SET part of the SQL command
 $set = '';
 $set2 = '';
 for ($i=0;$i<count($columns);$i++) {
   $set.=($i>0?',':'').'`'.$columns[$i].'`';
-  $set2.=($values[$i]===null?'NULL':'"'.$values[$i].'"');
+  $set2.=($values[$i]===null?'NULL':'"'.$values[$i].'",');
+  $set3.=($i>0?',':'').'`'.$columns[$i].'`=';
+  $set3.=($values[$i]===null?'NULL':'"'.$values[$i].'"');
 }
 
- echo "<script>
- alert('$set');
-alert('$method');
-</script>";
-
+$set2 = rtrim($set2,',');
 
 // create SQL based on HTTP method
 switch ($method) {
   case 'GET':
-    $sql = "select * from `$table`".($key?" WHERE id=$key":''); break;
+    $sql = "select * from `$table`".($filter?" WHERE $filter":''); break;
   case 'PUT':
-    $sql = "update `$table` set $set where id=$key"; break;
+    $sql = "update `$table` set $set3 where $filter"; break;
   case 'POST':
     $sql = "insert into `$table`($set) values ($set2)"; break;
   case 'DELETE':
-    $sql = "delete from $table where Inst_Name=$key"; break;
+    $sql = "delete from $table where $filter"; break;
   case 'GETFIL':
-    $sql = "select `$columns2` from `$table` WHERE $columns2"); break;
+    $sql = "select `$columns2` from `$table` WHERE $filter"; break;
 }
 
-$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-fwrite($myfile, $sql);
+$myfile3 = fopen("newfile.txt", "w") or die("Unable to open file!");
+fwrite($myfile3, $sql);
 // excecute SQL statement
 $result = mysqli_query($link,$sql);
 
