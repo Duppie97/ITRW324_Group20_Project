@@ -79,16 +79,12 @@ function hoverOff(id) {
 
 function validate()
 {
+  var myArr = {'Inst_Name': 21};
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "http://localhost/api.php", false);
-  alert("2");
+  xhttp.open("GETFIL", "http://localhost/api.php/instruments/Inst_Name=1", false);
   xhttp.setRequestHeader("Content-type", "application/json");
-  alert("3");
-  xhttp.send("aaaaaa");
-  alert("4");
-  alert(xhttp.responseText);
+  xhttp.send(JSON.stringify(myArr) + "&Inst_Name");
   var response = JSON.parse(xhttp.responseText);
-  
 }
 
 $( document ).ready(function() {
