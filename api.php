@@ -1,15 +1,22 @@
 <?php
  
-
 // get the HTTP method, path and body of the request
-$method = 'DELETE';
+$method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
-$input = json_decode(file_get_contents('php://input'),true);
+
+$txt = file_get_contents('php://input');
+$arrParam = explode('&', $txt);
+$input = json_decode($arrParam[0],true);
+$columns2 = $arrParam[1];
+
+
+
+$myfile = fopen("newfile3.txt", "w") or die("Unable to open file!");
+fwrite($myfile, $arrParam[1]);
 
 // connect to the mysql database
 $link = new mysqli("localhost", "root", "", "324projek");
 mysqli_set_charset($link,'utf8');
-
 
 if ($link->connect_error) {
     echo "<script>
@@ -21,9 +28,13 @@ if ($link->connect_error) {
 
 
  
-// retrieve the table and key from the path
+// retrieve the table and key from the pathS
 $table = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
 $key = array_shift($request)+0;
+
+
+$myfile = fopen("newfile4.txt", "w") or die("Unable to open file!");
+fwrite($myfile, $key);
 
 echo "<script>
 alert('$input');
@@ -39,16 +50,22 @@ $values = array_map(function ($value) use ($link) {
   return mysqli_real_escape_string($link,(string)$value);
 },array_values($input));
  
-
+echo "<script>
+alert('$columns[0]');
+alert('$values[0]');
+alert('$value');
+</script>";
 
 // build the SET part of the SQL command
 $set = '';
+$set2 = '';
 for ($i=0;$i<count($columns);$i++) {
-  $set.=($i>0?',':'').'`'.$columns[$i].'`=';
-  $set.=($values[$i]===null?'NULL':'"'.$values[$i].'"');
+  $set.=($i>0?',':'').'`'.$columns[$i].'`';
+  $set2.=($values[$i]===null?'NULL':'"'.$values[$i].'"');
 }
 
  echo "<script>
+ alert('$set');
 alert('$method');
 </script>";
 
@@ -60,31 +77,18 @@ switch ($method) {
   case 'PUT':
     $sql = "update `$table` set $set where id=$key"; break;
   case 'POST':
-    $sql = "insert into `$table` set $set"; break;
+    $sql = "insert into `$table`($set) values ($set2)"; break;
   case 'DELETE':
     $sql = "delete from $table where Inst_Name=$key"; break;
+  case 'GETFIL':
+    $sql = "select `$columns2` from `$table` WHERE $columns2"); break;
 }
 
-
-echo "<script>
-alert('$sql');
-</script>";
-
-
-if ($link->query($sql) === TRUE) {
-    echo "<script>
-alert('jip');
-</script>";
-} 
-else {
-   echo "<script>
-alert('nope ')
-</script>" . $link->error;
-}
-
+$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+fwrite($myfile, $sql);
 // excecute SQL statement
 $result = mysqli_query($link,$sql);
- 
+
 
 
 // die if SQL statement failed
