@@ -86,7 +86,7 @@ function validate()
   var key = "";
 
   //INSERT INTO table (column) VALUES (value)   -> format {'column1' : 'value1', 'column2' : 'value2'}
-  var myArr = {'Name': document.getElementById("name").value, 'Surname': document.getElementById("surname").value,'Email': document.getElementById("email").value,'Password': document.getElementById("password").value,'Band_Stat': $('input[name=band-status]:checked').val(),'Audio_Prof': document.getElementById("audiof").value};
+  var myArr = {'Name': document.getElementById("name").value, 'Surname'};
 
   //SELECT columns FROM table                   -> format "&column1,column2,column3"
   var columns = "";
