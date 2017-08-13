@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <title>CreateSession</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+      <style type="text/css">
+      body,td,th {
+	font-family: "Titillium Web", sans-serif;
+	font-size: large;
+}
+      </style>
+</head>
+
+<body>
+  <div class="form">
+        <div id="create">   
+          <h1>Create your own session!</h1>
+          
+          <form action="/" method="post">
+		  
+          <div class="field-wrap">
+            <label>
+              Enter room name<span class="req">*</span>
+            </label>
+            <input type="name"required autocomplete="off" id="name"/>
+          </div>
+		  		 
+		          
+          <div class="field-wrap">
+            <label>
+              What kind of session do you wish to create?<span class="req">*</span>
+            </label>
+            <Select name="session_type" >
+			<option value="rock">Rock</option>
+			<option value = "jazz">Jazz</option>
+			<option value="punk">Punk</option>
+		</Select>
+          </div>
+          
+
+
+      <div class="field-wrap">
+      <label>Choose your primary instrument<span class="req">*</span></label>
+      <select name="primary_instrument">
+        <option value = "acoustic_guitar" selected>Acoustic guitar</option>
+        <option value = "electric_guitar">Electric guitar</option>
+        <option value = "drums">Drums</option>
+        <option value = "bass_guitar">Bass guitar</option>
+        <option value = "cymbals">Cymbals</option>
+        <option value = "djembe">Djembe</option>
+        <option value = "flute">Flute</option>
+        <option value = "harmonica">Harmonica</option>
+        <option value = "harp">Harp</option>
+        <option value = "keyboard">Keyboard</option>
+        <option value = "maracas">Maracas</option>
+        <option value = "vocals">Vocals</option>
+        <option value = "piano">Piano</option>
+        <option value = "saxophone">Saxophone</option>
+        <option value = "tambourine">Tambourine</option>
+        <option value = "trumpet">Trumpet</option>
+        <option value = "triangle">Triangle</option>
+        <option value = "ukulele">Ukulele</option>
+        <option value = "violin">Violin</option>
+        <option value = "xilofone">Xilofone</option>
+      </select>
+      <br><br>
+      </div>
+
+
+
+
+            <div class="field-wrap">
+            <br>
+            <label>
+              Introduction
+            </label> 
+            <p>
+            	This is a test of skill and power, rise to the top and claim victory over your enemies.  O, wait, that's the wrong idea...
+            	Okay just have fun!
+            </p>
+            </div>
+		<div>
+				<button type="submit" class="button button-block" name='go' value="Start Jamming!" onclick="window.location.href='http://www.localhost/t1.html'"/>Start Jamming!</button>
+			<br><br>
+				<button type="submit" class="button button-block" name='go' value="Retreat" onclick="window.location.href='http://www.localhost/t1.html'"/>Retreat</button>	
+				
+		</div>
+          </form>
+
+        </div>
+      
+</div> <!-- /form -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="index.js"></script>
+
+</body>
+</html>
