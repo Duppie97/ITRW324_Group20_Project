@@ -85,16 +85,18 @@ h2 {
 }
 
 label {
-  position: absolute;
-  -webkit-transform: translateY(6px);
-          transform: translateY(6px);
-  left: 13px;
-  color: rgba(255, 255, 255, 0.5);
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-  -webkit-backface-visibility: hidden;
-  pointer-events: none;
-  font-size: 22px;
+	position: absolute;
+	-webkit-transform: translateY(6px);
+	transform: translateY(6px);
+	left: 0px;
+	color: rgba(255, 255, 255, 0.5);
+	-webkit-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+	-webkit-backface-visibility: hidden;
+	pointer-events: none;
+	font-size: 22px;
+	width: 584px;
+	top: -38px;
 }
 
 label .req {
@@ -141,8 +143,9 @@ textarea {
 }
 
 .field-wrap {
-  position: relative;
-  margin-bottom: 40px;
+	position: relative;
+	margin-bottom: 40px;
+	margin-top: 0px;
 }
 
 .top-row:after {
@@ -250,4 +253,3 @@ div.gallery {
 .option-input.radio::after {
   border-radius: 50%;
 }
-
