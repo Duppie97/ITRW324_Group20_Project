@@ -7,7 +7,7 @@ function useDB()
   var key = "";
 
   //INSERT INTO table (column) VALUES (value)   -> format {'column1' : 'value1', 'column2' : 'value2'}
-  var myArr = {'column': 'value'};
+  var myArr = {'': ''};
 
   //SELECT columns FROM table                   -> format "&column1,column2,column3"
   var columns = "";
