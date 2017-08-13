@@ -79,33 +79,97 @@ function hoverOff(id) {
 
 function validate()
 {
-  //SELECT * FROM table
+
+  if(validateEmail()==true)
+  {
   var table = "member";
-
-  //WHERE id=key                                -> format "/5"
-  var key = "";
-
-  //INSERT INTO table (column) VALUES (value)   -> format {'column1' : 'value1', 'column2' : 'value2'}
   var myArr = {'Name': document.getElementById("name").value, 'Surname': document.getElementById("surname").value,'Email': document.getElementById("email").value,'Password': document.getElementById("password").value,'Band_Stat': $('input[name=band-status]:checked').val(),'Audio_Prof': document.getElementById("audiof").value};
-
-  //SELECT columns FROM table                   -> format "&column1,column2,column3"
-  var columns = "";
-
-  //WHERE crit                                  -> format "&column1=valueA AND column2=valueB"
-  var crit = "";
-
-  //GET, PUT, POST, DELETE, GETFIL(filter)      -> GET = SELECT * FROM table WHERE ID=key
-  //                                            -> PUT = UPDATE table SET column1=value1, column2=value2... WHERE ID=key
-  //                                            -> POST = INSERT INTO table(column1,column2...) VALUES (value1,value2...)
-  //                                            -> DELETE = DELETE FROM table WHERE ID=key
-  //                                            -> GETFIL = SELECT columns FROM table WHERE crit
   var method = "POST";
 
   var xhttp = new XMLHttpRequest();
-  xhttp.open(method, "http://localhost/api.php/" + table + key , false);
+  xhttp.open(method, "http://localhost/api.php/" + table , false);
   xhttp.setRequestHeader("Content-type", "application/json");
-  xhttp.send(JSON.stringify(myArr) + columns + crit);
-  var response = JSON.parse(xhttp.responseText);
+  xhttp.send(JSON.stringify(myArr));
+
+
+  var response = xhttp.responseText;
+  console.log(response);
+
+  
+
+  var i = 0;
+  $( '.gallery' ).each( function ( ) {
+    var id = ($(this).attr('id'));
+    var val = document.getElementById(id).value;
+    if(val==='true')
+    {
+      validateInstruments(id, i);
+      i = i + 1;
+    }
+  });
+  }
+}
+
+function validateInstruments(id, i)
+{
+      var xhttp = new XMLHttpRequest();
+      var table = "user_instrument";
+      var myArr = {'Email': document.getElementById("email").value,'Instrument': id};
+      var method = "POST";
+
+     
+      xhttp.open(method, "http://localhost/api.php/" + table, true);
+      xhttp.setRequestHeader("Content-type", "application/json");
+      xhttp.send(JSON.stringify(myArr));  
+}
+
+function validateEmail()
+{
+  var table = "member";                               
+  var crit = "`Email` = '" + document.getElementById("email").value + "'";
+  var method = "GETFIL";
+  var xhttp = new XMLHttpRequest();
+  xhttp.open(method, "http://localhost/api.php/" + table, false);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send("&Email&" + crit);
+
+  var response = xhttp.responseText;
+  if(Object.keys(response).length > 0)
+  {
+    alert("This email is already registered. To continue please log in or sign up with a different email.");
+    return false;
+  }
+  else return true;
+
+}
+
+function logIn()
+{
+  var table = "member";                               
+  var crit = "`Email` = '" + document.getElementById("logemail").value + "'";
+  var method = "GETFIL";
+  var xhttp = new XMLHttpRequest();
+  xhttp.open(method, "http://localhost/api.php/" + table, false);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send("&Email,Password&" + crit);
+  var bool = true;
+  var response = xhttp.responseText;
+  if(Object.keys(response).length == 0)
+  {
+    alert("This email is not registered. Please re-enter email or sign up.");
+    bool = false;
+  }
+  else
+  {
+    if(response.substring(response.indexOf(',')+13,response.indexOf('}')-1)==document.getElementById("logpassword").value)
+    {
+      alert('ok');
+    }
+    else
+    {
+      alert('Email and password does not match. Please try again.')
+    }
+  }
 }
 
 $( document ).ready(function() {

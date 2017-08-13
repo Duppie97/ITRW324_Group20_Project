@@ -63,7 +63,7 @@
       <label>Select the instruments that you can play<span class="req">*</span></label><br><br>
             <img autocomplete="off" id="acoustic-guitar" onclick="changeImage('acoustic-guitar')" onmouseover="hoverImage('acoustic-guitar')" onmouseout="hoverOff('acoustic-guitar')" value="false" class="gallery" src=file:///C:/wamp64/www/icons/png/acoustic-guitar.png/>
             <img autocomplete="off" id="electric-guitar" onclick="changeImage('electric-guitar')" onmouseover="hoverImage('electric-guitar')" onmouseout="hoverOff('electric-guitar')" value="false" class="gallery"/>
-            <img autocomplete="off" id="drum-set" onclick="changeImage('drum-set')" onmouseover="hoverImage('drum-set')" onmouseout="hoverOff('drum-set')" value="drum set" class="gallery"/>
+            <img autocomplete="off" id="drum-set" onclick="changeImage('drum-set')" onmouseover="hoverImage('drum-set')" onmouseout="hoverOff('drum-set')" value="false" class="gallery"/>
             <img autocomplete="off" id="bass-guitar" onclick="changeImage('bass-guitar')" onmouseover="hoverImage('bass-guitar')" onmouseout="hoverOff('bass-guitar')" value="false" class="gallery"/>
             <img autocomplete="off" id="cymbal" onclick="changeImage('cymbal')" onmouseover="hoverImage('cymbal')" onmouseout="hoverOff('cymbal')" value="false" class="gallery"/>
             <img autocomplete="off" id="djembe" onclick="changeImage('djembe')" onmouseover="hoverImage('djembe')" onmouseout="hoverOff('djembe')" value="false" class="gallery"/>
@@ -99,7 +99,7 @@
             In a band<br>
             <input type="radio"required autocomplete="off" name="band-status" value="need-a-band" class="option-input radio"/>
             Need a band<br>
-            <input type="radio"required autocomplete="off" name="band-status" value="it''s-complicated" class="option-input radio"/>
+            <input type="radio"required autocomplete="off" name="band-status" value="it's-complicated" class="option-input radio"/>
             It's complicated<br><br><br>
             
             <div class="field-wrap">
@@ -127,19 +127,19 @@
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off"/>
+            <input type="email"required autocomplete="off" id = "logemail"/>
           </div>
           
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off"/>
+            <input type="password"required autocomplete="off" id = "logpassword"/>
           </div>
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
           
-          <button class="button button-block"/>Log In</button>
+          <button class="button button-block" onclick="logIn()" />Log In</button>
           
           </form>
 
