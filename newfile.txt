@@ -1,1 +1,1 @@
-insert into `create_session`(`Room_Name`,`Room_ID`,`Instrument`,`Room_Type`) values ("Doos","191","acoustic_guitar","rock")
+insert into `session_instruments`(`Room_ID`,`Inst_Needed`) values ("503","electric-guitar")
