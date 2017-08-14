@@ -1,0 +1,1 @@
+insert into `session_instruments`(`Room_ID`,`Inst_Needed`) values ("503","electric-guitar")

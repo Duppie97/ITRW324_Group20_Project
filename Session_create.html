@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create a session !</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<script type ="text/javascript">
+	var userName = "jaco.vanzyl@creative-sound.net";
+	</script>
+
+</head>
+<body>
+		<iframe name="votar" style="display:none;"></iframe>
+		<form action="session_create.php" method= "post" target="votar">
+	<p>
+		<label> Enter room name :</label>
+		<input type ="text" name ="roomname" id=txtRn value=""/>
+		<label> What kind of session do you wish to create ? </label>
+		<Select name="session_type" >
+			<option value="rock">Rock</option>
+			<option value = "jazz">Jazz</option>
+			<option value="punk">Punk</option>
+		</Select>
+
+		<label> what is your primary instrument?</label>
+		<select name="primary_instrument">
+			<option value = "acoustic_guitar">Acoustic guitar</option>
+			<option value = "electric_guitar">Electric guitar</option>
+			<option value = "drums">Drums</option>
+			<option value = "bass_guitar">Bass guitar</option>
+			<option value = "cymbals">Cymbals</option>
+			<option value = "djembe">Djembe</option>
+			<option value = "floot">Floot</option>
+			<option value = "harmonica">Harmonica</option>
+			<option value = "harp">Harp</option>
+			<option value = "keyboard">Keyboard</option>
+			<option value = "maracas">Maracas</option>
+			<option value = "vocals">Vocals</option>
+			<option value = "piano">Piano</option>
+			<option value = "saxophone">Saxophone</option>
+			<option value = "tambourine">Tambourine</option>
+			<option value = "trumpet">Trumpet</option>
+			<option value = "triangle">Triangle</option>
+			<option value = "ukulele">Ukulele</option>
+			<option value = "violin">Violin</option>
+			<option value = "xilofone">Xilofone</option>
+		</select>
+		
+		<input type="submit" value="Put Your Text Here" onclick="window.location.href='http://localhost/session.html'" />
+	</p>
+		</form>
+		
+
+
+
+</body>
+</html>
