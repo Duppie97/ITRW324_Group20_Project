@@ -2,12 +2,15 @@
 
 var connection = new RTCMultiConnection();
 
+
+
 window.onbeforeunload = function(e){
 hangup();
 }
 
 // this line is VERY_important
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+
 
 // all below lines are optional; however recommended.
 
@@ -19,7 +22,7 @@ connection.session = {
 
 
 connection.sdpConstraints.mandatory = {
-    OfferToReceiveAudio: false,
+    OfferToReceiveAudio: true,
     OfferToReceiveVideo: true
 };
 
@@ -36,4 +39,3 @@ function joinScreen()
 
 	window.location = 'localhost/session.html';
 }
-window.alert("sometext");

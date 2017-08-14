@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background: #c1bdba;
+  
   font-family: 'Titillium Web', sans-serif;
   color: #ffffff;
   font-weight: 1000;
@@ -25,12 +25,12 @@ a:hover {
 }
 
 .form {
-  background: rgba(50, 2, 47, 0.9);
-  padding: 40px;
-  max-width: 600px;
+  background: rgba(50, 2, 47, 1.0);
+  padding: 80px;
+  max-width: 1000px;
   margin: 40px auto;
   border-radius: 4px;
-  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 1.0);
 }
 
 .tab-group {
@@ -85,16 +85,18 @@ h2 {
 }
 
 label {
-  position: absolute;
-  -webkit-transform: translateY(6px);
-          transform: translateY(6px);
-  left: 13px;
-  color: rgba(255, 255, 255, 0.5);
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-  -webkit-backface-visibility: hidden;
-  pointer-events: none;
-  font-size: 22px;
+	position: absolute;
+	-webkit-transform: translateY(6px);
+	transform: translateY(6px);
+	left: 0px;
+	color: rgba(255, 255, 255, 0.5);
+	-webkit-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+	-webkit-backface-visibility: hidden;
+	pointer-events: none;
+	font-size: 22px;
+	width: 584px;
+	top: -42px;
 }
 
 label .req {
@@ -141,8 +143,9 @@ textarea {
 }
 
 .field-wrap {
-  position: relative;
-  margin-bottom: 40px;
+	position: relative;
+	margin-bottom: 100px;
+	margin-top: 10px;
 }
 
 .top-row:after {
@@ -251,3 +254,48 @@ div.gallery {
   border-radius: 50%;
 }
 
+input[type=checkbox]
+{
+  -webkit-appearance:checkbox;
+}
+
+.squaredFour {
+  width: 20px;
+  position: relative;
+  margin: 20px auto;
+  label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fcfff4;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    &:after {
+      content: '';
+      width: 9px;
+      height: 5px;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      border: 3px solid #333;
+      border-top: none;
+      border-right: none;
+      background: transparent;
+      opacity: 0;
+      transform: rotate(-45deg);
+    }
+    &:hover::after {
+      opacity: 0.5;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }    
+}

@@ -1,5 +1,9 @@
+var ip = "196.252.154.147";
 var imgPath = "img/";
-var imgPath2 = "http://localhost/img/"
+var imgPath2 = "http://localhost/img/";
+var imgPath3 = "http://"+ip+"/img/";
+var apiPath = "http://localhost/api.php/";
+var apiPath2 = "http://"+ip+"/api.php/";
 
 $('.form').find('input, textarea').on('keyup blur focus', function (e) {
   
@@ -48,12 +52,17 @@ $('.tab a').on('click', function (e) {
 });
 
 function changeImage(id) {
-        if (document.getElementById(id).src == imgPath2 + id + "-h.png") 
+        if (document.getElementById(id).src == imgPath2 + id + "-h.png"||document.getElementById(id).src == imgPath3 + id + "-g.png") 
         {
             document.getElementById(id).src = imgPath + id + ".png";
             document.getElementById(id).value = "true";
         }
-        else 
+        else if(document.getElementById(id).src == imgPath3 + id + ".png")
+        {
+            document.getElementById(id).src = imgPath + id + "-g.png";
+            document.getElementById(id).value = "false";
+        }
+        else
         {
             document.getElementById(id).src = imgPath + id + "-h.png";
             document.getElementById(id).value = "false";
@@ -79,6 +88,9 @@ function hoverOff(id) {
 
 function validate()
 {
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    apiPath = apiPath2;
+  }
 
   if(validateEmail()==true)
   {
@@ -87,7 +99,7 @@ function validate()
   var method = "POST";
 
   var xhttp = new XMLHttpRequest();
-  xhttp.open(method, "http://localhost/api.php/" + table , false);
+  xhttp.open(method, apiPath + table , false);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(JSON.stringify(myArr));
 
@@ -117,8 +129,10 @@ function validateInstruments(id, i)
       var myArr = {'Email': document.getElementById("email").value,'Instrument': id};
       var method = "POST";
 
-     
-      xhttp.open(method, "http://localhost/api.php/" + table, true);
+     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    apiPath = apiPath2;
+  }
+      xhttp.open(method, apiPath + table, true);
       xhttp.setRequestHeader("Content-type", "application/json");
       xhttp.send(JSON.stringify(myArr));  
 }
@@ -129,13 +143,17 @@ function validateEmail()
   var crit = "`Email` = '" + document.getElementById("email").value + "'";
   var method = "GETFIL";
   var xhttp = new XMLHttpRequest();
-  xhttp.open(method, "http://localhost/api.php/" + table, false);
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+     apiPath = apiPath2;
+  }
+  xhttp.open(method, apiPath + table, false);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send("&Email&" + crit);
 
   var response = xhttp.responseText;
   if(Object.keys(response).length > 0)
   {
+    alert(response);
     alert("This email is already registered. To continue please log in or sign up with a different email.");
     return false;
   }
@@ -149,11 +167,17 @@ function logIn()
   var crit = "`Email` = '" + document.getElementById("logemail").value + "'";
   var method = "GETFIL";
   var xhttp = new XMLHttpRequest();
-  xhttp.open(method, "http://localhost/api.php/" + table, false);
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    apiPath = apiPath2;
+  }
+  alert(apiPath);
+  xhttp.open(method, apiPath + table, false);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send("&Email,Password&" + crit);
   var bool = true;
   var response = xhttp.responseText;
+  var json = JSON.parse(response);
+
   if(Object.keys(response).length == 0)
   {
     alert("This email is not registered. Please re-enter email or sign up.");
@@ -161,7 +185,7 @@ function logIn()
   }
   else
   {
-    if(response.substring(response.indexOf(',')+13,response.indexOf('}')-1)==document.getElementById("logpassword").value)
+    if(json['Email']==document.getElementById("logpassword").value)
     {
       alert('ok');
     }
