@@ -1,28 +1,4 @@
-<<<<<<< HEAD
 var ip = "196.252.154.147";
-=======
-<<<<<<< HEAD
-var ip = "196.252.154.147";
-=======
-$('.form').ready(function() {
-    var table = $('#example').DataTable();
- 
-    $('#example tbody').on( 'click', 'tr', function () {
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-        }
-        else {
-            table.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-        }
-    } );
- 
-    $('#button').click( function () {
-        table.row('.selected').remove().draw( false );
-    } );
-} );
->>>>>>> 0b76a7d3d85ed0a5bdc471eb3d3b02fd99e6c789
->>>>>>> feature/session_(active)
 var imgPath = "img/";
 var imgPath2 = "http://localhost/img/";
 var imgPath3 = "http://"+ip+"/img/";
@@ -127,12 +103,7 @@ function validate()
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(JSON.stringify(myArr));
 
-<<<<<<< HEAD
-=======
-  //INSERT INTO table (column) VALUES (value)   -> format {'column1' : 'value1', 'column2' : 'value2'}
-  var myArr = {'Name': document.getElementById("name").value, 'Surname'};
->>>>>>> 0b76a7d3d85ed0a5bdc471eb3d3b02fd99e6c789
-
+  localStorage.setItem("emailid",document.getElementById("email").value);
   var response = xhttp.responseText;
   console.log(response);
 
@@ -199,14 +170,14 @@ function logIn()
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     apiPath = apiPath2;
   }
-  alert(apiPath);
+
   xhttp.open(method, apiPath + table, false);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send("&Email,Password&" + crit);
   var bool = true;
   var response = xhttp.responseText;
   var json = JSON.parse(response);
-
+  alert(json['Email']);
   if(Object.keys(response).length == 0)
   {
     alert("This email is not registered. Please re-enter email or sign up.");
@@ -214,9 +185,10 @@ function logIn()
   }
   else
   {
-    if(json['Email']==document.getElementById("logpassword").value)
+    if(json['Password']==document.getElementById("logpassword").value)
     {
       alert('ok');
+      localStorage.setItem("emailid",json['Email']);
     }
     else
     {
