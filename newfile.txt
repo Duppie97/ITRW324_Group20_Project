@@ -1,1 +1,1 @@
-insert into `session_instruments`(`Room_ID`,`Inst_Needed`) values ("897a@a","electric-guitar")
+select * from `create_session` WHERE Room_ID=465
