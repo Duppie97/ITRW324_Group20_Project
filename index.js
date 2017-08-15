@@ -88,6 +88,13 @@ function hoverOff(id) {
 
 function validate()
 {
+  validate2();
+  window.location.href="http://localhost/main";
+}
+
+function validate2()
+{
+   
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     apiPath = apiPath2;
   }
@@ -120,6 +127,8 @@ function validate()
     }
   });
   }
+
+  
 }
 
 function validateInstruments(id, i)
@@ -176,6 +185,7 @@ function logIn()
   xhttp.send("&Email,Password&" + crit);
   var bool = true;
   var response = xhttp.responseText;
+  if(xhttp.response != ""){
   var json = JSON.parse(response);
 
   if(Object.keys(response).length == 0)
@@ -194,6 +204,11 @@ function logIn()
       alert('Email and password does not match. Please try again.')
     }
   }
+
+}
+else
+alert("No member found");
+
 }
 
 $( document ).ready(function() {

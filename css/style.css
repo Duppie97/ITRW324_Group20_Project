@@ -33,9 +33,16 @@ a:hover {
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 1.0);
 }
 
-.body-background{
-  background-image: url("img/wbg.png");
+.form-index {
+  background: rgba(50, 2, 47, 0.9);
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
+
+
 
 .tab-group {
   list-style: none;
@@ -152,6 +159,12 @@ textarea {
 	margin-top: 10px;
 }
 
+.field-wrap-index {
+ position: relative;
+  margin-bottom: 40px;
+  
+}
+
 .top-row:after {
   content: "";
   display: table;
@@ -201,9 +214,52 @@ textarea {
   -webkit-appearance: none;
 }
 
+.create-button {
+border: 0;
+  outline: none;
+  border-radius: 10;
+  padding: 20;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+
+.index-button {
+border: 0;
+  outline: none;
+  border-radius: 10;
+  padding: 20;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+
+
+
+
 .button-block {
   display: block;
   width: 20%;}
+
+  .button-block-index {
+  display: block;
+  width: 50%;}
+
+  .button-block-create {
+  display: block;
+  width: 50%;}
 
 .button-block-main{
   display: block;

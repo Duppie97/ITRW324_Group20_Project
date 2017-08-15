@@ -41,7 +41,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   	
   
   var response = JSON.parse(xhttp.responseText);
-  alert(response["Reports"]);
+  //alert(response["Reports"]);
   
   if(response["Reports"] ==10)
   {
