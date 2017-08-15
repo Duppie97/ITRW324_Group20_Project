@@ -136,10 +136,12 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   xhttp.open(method, apiPath + table + key , false);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(JSON.stringify(myArr) + '&' + columns + '&' + crit);
+  if(xhttp.response != "")
+  {
   var res = JSON.parse(xhttp.responseText);
 
   name = res['Name'];
-
+}
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function changeImage(id) {

@@ -9,7 +9,7 @@ var gnre;
 var table;
 var mytable;
 var arr=[];
-localStorage.setItem("currInst", 'triangle');
+
 
 
 
@@ -20,7 +20,6 @@ $( document ).ready(function() {
 
 function filter()
 {
-
     var e = document.getElementById("filter_choice");
     var strUser = e.options[e.selectedIndex].value;
     fill(" AND " + strUser + " LIKE '%" + document.getElementById("filter_answer").value + "%'");
@@ -102,11 +101,14 @@ function fill(criteria)
 
 function activateClick()
 {
+
     tb = document.getElementById('table');
     for(var i = 1 ; i< tb.rows.length;i++)
     {
+      alert("ok");
     tb.rows[i].onclick=function()
         {
+
             var table = "member";
               var key = "";
               var myArr = null;
@@ -121,10 +123,13 @@ function activateClick()
               xhttp.open(method, apiPath + table + key , false);
               xhttp.setRequestHeader("Content-type", "application/json");
               xhttp.send(JSON.stringify(myArr) + '&' + columns + '&' + crit);
+              var name = "";
+              if(xhttp.responseText != "")
+              {
               var res = JSON.parse(xhttp.responseText);
 
-              var name = res['Name'];
-
+              name = res['Name'];
+              }
             rIndex = this.rowIndex;
             id = this.cells[0].innerHTML;
             room = this.cells[1].innerHTML;
@@ -144,6 +149,7 @@ function activateClick()
               xhttp.send(JSON.stringify(myArr)); 
 
               window.location.href="http://localhost/session?room_name=" + room + "&room_id=" + arr[id];
+
         }
     }
 

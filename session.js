@@ -40,7 +40,7 @@ connection.onstream = function(event) {
     document.body.appendChild( event.mediaElement );
 };
 
-alert(getUrlVars()["room_id"]);
+
 var predefinedRoomId = getUrlVars()["room_id"];
 
 connection.openOrJoin(predefinedRoomId);

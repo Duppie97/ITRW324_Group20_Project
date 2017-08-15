@@ -1,1 +1,0 @@
-select * from `create_session` WHERE Room_ID=465

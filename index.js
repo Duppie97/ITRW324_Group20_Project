@@ -88,6 +88,13 @@ function hoverOff(id) {
 
 function validate()
 {
+  validate2();
+  window.location.href="http://localhost/main";
+}
+
+function validate2()
+{
+   
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     apiPath = apiPath2;
   }
@@ -103,7 +110,7 @@ function validate()
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(JSON.stringify(myArr));
 
-  localStorage.setItem("emailid",document.getElementById("email").value);
+
   var response = xhttp.responseText;
   console.log(response);
 
@@ -120,6 +127,8 @@ function validate()
     }
   });
   }
+
+  
 }
 
 function validateInstruments(id, i)
@@ -170,14 +179,15 @@ function logIn()
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     apiPath = apiPath2;
   }
-
+  alert(apiPath);
   xhttp.open(method, apiPath + table, false);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send("&Email,Password&" + crit);
   var bool = true;
   var response = xhttp.responseText;
+  if(xhttp.response != ""){
   var json = JSON.parse(response);
-  alert(json['Email']);
+
   if(Object.keys(response).length == 0)
   {
     alert("This email is not registered. Please re-enter email or sign up.");
@@ -185,17 +195,20 @@ function logIn()
   }
   else
   {
-    if(json['Password']==document.getElementById("logpassword").value)
+    if(json['Email']==document.getElementById("logpassword").value)
     {
       alert('ok');
-      localStorage.setItem("emailid",json['Email']);
-      
     }
     else
     {
       alert('Email and password does not match. Please try again.')
     }
   }
+
+}
+else
+alert("No member found");
+
 }
 
 $( document ).ready(function() {
