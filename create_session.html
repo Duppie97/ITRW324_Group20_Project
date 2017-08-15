@@ -8,6 +8,7 @@
 
   
       <link rel="stylesheet" href="css/style.css">
+      <script type="text/javascript" src = "js/session_create.js"></script>
       <style type="text/css">
       body,td,th {
 	font-family: "Titillium Web", sans-serif;
@@ -19,6 +20,17 @@
 <body>
 <body background="wp.png">
 
+<script type="text/javascript">
+  function opklik()
+  {
+    
+    validate();
+    
+    window.location.href="http://localhost/session.html";
+
+  }
+
+</script>
   <div class="form">
         <div id="create">   
           <h1>Create your own session!</h1>
@@ -55,30 +67,32 @@
           </div>
           
 
-<div class="field-wrap">
-      <label>Select the instruments that you allow in this session<span class="req">*</span></label><br><br>
-            <img autocomplete="off" id="acoustic-guitar" onclick="changeImage('acoustic-guitar')" onmouseover="hoverImage('acoustic-guitar')" onmouseout="hoverOff('acoustic-guitar')" value="false" class="gallery" src=file:///C:/wamp64/www/icons/png/acoustic-guitar.png/>
-            <img autocomplete="off" id="electric-guitar" onclick="changeImage('electric-guitar')" onmouseover="hoverImage('electric-guitar')" onmouseout="hoverOff('electric-guitar')" value="false" class="gallery"/>
-            <img autocomplete="off" id="drum-set" onclick="changeImage('drum-set')" onmouseover="hoverImage('drum-set')" onmouseout="hoverOff('drum-set')" value="false" class="gallery"/>
-            <img autocomplete="off" id="bass-guitar" onclick="changeImage('bass-guitar')" onmouseover="hoverImage('bass-guitar')" onmouseout="hoverOff('bass-guitar')" value="false" class="gallery"/>
-            <img autocomplete="off" id="cymbal" onclick="changeImage('cymbal')" onmouseover="hoverImage('cymbal')" onmouseout="hoverOff('cymbal')" value="false" class="gallery"/>
-            <img autocomplete="off" id="djembe" onclick="changeImage('djembe')" onmouseover="hoverImage('djembe')" onmouseout="hoverOff('djembe')" value="false" class="gallery"/>
-            <img autocomplete="off" id="flute" onclick="changeImage('flute')" onmouseover="hoverImage('flute')" onmouseout="hoverOff('flute')" value="false" class="gallery"/>
-            <img autocomplete="off" id="harmonica" onclick="changeImage('harmonica')" onmouseover="hoverImage('harmonica')" onmouseout="hoverOff('harmonica')" value="false" class="gallery"/>
-            <img autocomplete="off" id="harp" onclick="changeImage('harp')" onmouseover="hoverImage('harp')" onmouseout="hoverOff('harp')" value="false" class="gallery"/>
-            <img autocomplete="off" id="keyboard" onclick="changeImage('keyboard')" onmouseover="hoverImage('keyboard')" onmouseout="hoverOff('keyboard')" value="false" class="gallery"/>
-            <img autocomplete="off" id="maracas" onclick="changeImage('maracas')" onmouseover="hoverImage('maracas')" onmouseout="hoverOff('maracas')" value="false" class="gallery"/>
-            <img autocomplete="off" id="microphone" onclick="changeImage('microphone')" onmouseover="hoverImage('microphone')" onmouseout="hoverOff('microphone')" value="false" class="gallery"/>
-            <img autocomplete="off" id="piano" onclick="changeImage('piano')" onmouseover="hoverImage('piano')" onmouseout="hoverOff('piano')" value="false" class="gallery"/>
-            <img autocomplete="off" id="saxophone" onclick="changeImage('saxophone')" onmouseover="hoverImage('saxophone')" onmouseout="hoverOff('saxophone')" value="false" class="gallery"/>
-            <img autocomplete="off" id="tambourine" onclick="changeImage('tambourine')" onmouseover="hoverImage('tambourine')" onmouseout="hoverOff('tambourine')" value="false" class="gallery"/>
-            <img autocomplete="off" id="trumpet" onclick="changeImage('trumpet')" onmouseover="hoverImage('trumpet')" onmouseout="hoverOff('trumpet')" value="false" class="gallery"/>
-            <img autocomplete="off" id="triangle" onclick="changeImage('triangle')" onmouseover="hoverImage('triangle')" onmouseout="hoverOff('triangle')" value="false" class="gallery"/>
-            <img autocomplete="off" id="ukelele" onclick="changeImage('ukelele')" onmouseover="hoverImage('ukelele')" onmouseout="hoverOff('ukelele')" value="false" class="gallery"/>
-            <img autocomplete="off" id="violin" onclick="changeImage('violin')" onmouseover="hoverImage('violin')" onmouseout="hoverOff('violin')" value="false" class="gallery"/>
-            <img autocomplete="off" id="xylophone" onclick="changeImage('xylophone')" onmouseover="hoverImage('xylophone')" onmouseout="hoverOff('xylophone')" value="fasle" class="gallery"/>
 
-
+      <div class="field-wrap">
+      <label>Choose your primary instrument<span class="req">*</span></label>
+      <select name="primary_instrument" id = "primary_instrument">
+        <option value = "acoustic_guitar" selected>Acoustic guitar</option>
+        <option value = "electric_guitar">Electric guitar</option>
+        <option value = "drums">Drums</option>
+        <option value = "bass_guitar">Bass guitar</option>
+        <option value = "cymbals">Cymbals</option>
+        <option value = "djembe">Djembe</option>
+        <option value = "flute">Flute</option>
+        <option value = "harmonica">Harmonica</option>
+        <option value = "harp">Harp</option>
+        <option value = "keyboard">Keyboard</option>
+        <option value = "maracas">Maracas</option>
+        <option value = "vocals">Vocals</option>
+        <option value = "piano">Piano</option>
+        <option value = "saxophone">Saxophone</option>
+        <option value = "tambourine">Tambourine</option>
+        <option value = "trumpet">Trumpet</option>
+        <option value = "triangle">Triangle</option>
+        <option value = "ukulele">Ukulele</option>
+        <option value = "violin">Violin</option>
+        <option value = "xilofone">Xilofone</option>
+      </select>
+      <br><br>
       </div>
 
 
@@ -90,9 +104,9 @@
 
             </div>
 		<div>
-				<button type="submit" class="button button-block" name="go" onclick="opklik()" value="Start Jamming!" />Start Jamming!</button>
+				<button type="submit" class="button button-block" name='go' onclick="opklik()" value="Start Jamming!" />Start Jamming!</button>
 			<br><br>
-				<button type="submit" class="button button-block" name='go' value="Retreat" onclick="window.location.href='http://localhost/session"/>Retreat</button>	
+				<button type="submit" class="button button-block" name='go' value="Retreat" onclick="window.location.href='http://localhost/session.html'"/>Retreat</button>	
 				
 		</div>
           </form>
@@ -102,9 +116,8 @@
 </div> <!-- /form -->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-    <script src ="js/session_create.js"></script>
-
-
+    <script src="create_session.js"></script>
+    
 
 </body>
 </html>

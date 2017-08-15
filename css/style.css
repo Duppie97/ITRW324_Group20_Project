@@ -33,6 +33,10 @@ a:hover {
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 1.0);
 }
 
+.body-background{
+  background-image: url("img/wbg.png");
+}
+
 .tab-group {
   list-style: none;
   padding: 0;

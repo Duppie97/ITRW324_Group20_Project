@@ -50,13 +50,15 @@ $set = '';
 $set2 = '';
 $set3 = '';
 for ($i=0;$i<count($columns);$i++) {
-  $set.=($i>0?',':'').'`'.$columns[$i].'`';
-  $set2.=($values[$i]===null?'NULL':'"'.$values[$i].'",');
-  $set3.=($i>0?',':'').'`'.$columns[$i].'`=';
-  $set3.=($values[$i]===null?'NULL':'"'.$values[$i].'"');
+  $s1 = ($i>0?',':'').'`'.$columns[$i].'`';
+  $s2 = ($values[$i]===null?'NULL':'"'.$values[$i].'",');
+  $set.= $s1;
+  $set2.= $s2;
+  $set3.= $s1."=".$s2;
 }
 
 $set2 = rtrim($set2,',');
+$set3 = rtrim($set3,',');
 
 // create SQL based on HTTP method
 switch ($method) {

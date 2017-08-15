@@ -1,4 +1,5 @@
 
+
 var connection = new RTCMultiConnection();
 
 
@@ -11,9 +12,6 @@ hangup();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 
 
-
-document.getElementById('roomName').innerHTML = localStorage.getItem("roomname");
-
 // all below lines are optional; however recommended.
 
 connection.session = {
@@ -21,7 +19,7 @@ connection.session = {
     video: true
 };
 
-//$("p").text("Hello world!");
+
 
 connection.sdpConstraints.mandatory = {
     OfferToReceiveAudio: true,
