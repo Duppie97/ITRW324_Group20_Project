@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html >
 <head>
+
+	<style>
+		table tr{
+			cursor: pointer;transition: all.25s ease-in-out;
+		}
+		table tr:hover{background-color:#1ab188;}
+
+		thead tr{
+			cursor: pointer;transition: all.25s ease-in-out;
+		}
+		thead tr:hover{background-color:#32022F;}
+
+	</style>
   <meta charset="utf-8" content="width=device-width, initial-scale=1">
   <title>JoinSession</title>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
@@ -19,48 +32,87 @@
 <body>
   <div class="form">
         <div id="join">   
-          <h1>Join a session NOW!</h1>
+          <h1>Join a session!</h1>
           
           <form action="/" method="post">        
           <div class="field-wrap">
             <label>
-              Select a genre and click filter<span class="req">*</span>
+              Filter by GENRE or NAME<span class="req">*</span>
             </label>
-        <Select name="session_type" >
-			<option value="rock">Rock</option>
-			<option value = "jazz">Jazz</option>
-			<option value="punk">Punk</option>
+        <Select name="filter_choice" id="filter_choice" class="inline" >
+			<option value="filter_name">Name</option>
+			<option value = "filter_genre">Genre</option>
+			
 		</Select>
+
+		<input type ="text" name=filter_answer id ="filter_answer" class="inline" required>
+		<br>
+		<br>
+		<br>
          <button type="filter" class="button button-block" name='filter' onclick="validate()" value="Filter" onclick="window.location.href='http://www.localhost/t1.html'"/>Filter</button>
           </div>
-          </div>	          
+        </div>	          
           
             <div class="field-wrap">
             <br>
             <label>
-              Table containing available sessions. (Press again to refresh)
+              Available sessions
             </label> 
-            <table id="example" class="display" cellspacing="0" width="100%">
-        <thead>
+            <table id="table" border ="1" class="display" cellspacing="0" width="50%">
+        
+            
+            <thead>
+            	<tr>
+	                <th margin = "40">ID</th>
+	                <th>Room</th>
+	                <th>Instrument</th>
+	                <th>Genre</th>
+            	</tr>
+            </thead>
             <tr>
-                <th>ID</th>
-                <th>Room</th>
-                <th>Instrument</th>
-                <th>Genre</th>
+                <td>01</td>
+                <td>Allers jou slet</td>
+                <td>triangle</td>
+                <td>boere musiek</td>
             </tr>
-        </thead>
-        <tfoot>
+
             <tr>
-                <th>ID</th>
-                <th>Room</th>
-                <th>Instrument</th>
-                <th>Genre</th>
+                <td>02</td>
+                <td>Stiaan jou slet</td>
+                <td>air guitar</td>
+                <td>clasic</td>
             </tr>
-        </tfoot>
+        
         <tbody>
             
         </tbody>
     </table>
+
+    <script type = "text/javascript">
+
+    
+    var tb = document.getElementById('table'),rIndex;
+    var id ;
+    var room;
+    var inst;
+    var gnre;
+
+    for(var i = 1 ; i< table.rows.length;i++)
+    {
+    	tb.rows[i].onclick=function()
+    	{
+    		rIndex = this.rowIndex;
+    		id = this.cells[0].innerHTML;
+    		room = this.cells[1].innerHTML;
+    		inst = this.cells[2].innerHTML;
+    		gnre = this.cells[3].innerHTML;
+    		alert(id);
+    		alert(room);
+    		alert(inst);
+    		alert(gnre);
+    	}
+    }
+    </script>
             </div>
 		<div>
 				<button type="submit" class="button button-block" name='back' value="Back" onclick="window.location.href='http://www.localhost/t1.html'"/>Back</button>	
