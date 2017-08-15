@@ -10,9 +10,16 @@ hangup();
 // this line is VERY_important
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 
+function getUrlVars() {
+var vars = {};
+var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+vars[key] = value;
+});
+return vars;
+}
 
-
-document.getElementById('roomName').innerHTML = localStorage.getItem("roomname");
+document.getElementById('roomName').innerHTML = getUrlVars()["room_name"];
+//localStorage.getItem("roomname");
 
 // all below lines are optional; however recommended.
 
@@ -39,5 +46,5 @@ connection.openOrJoin(predefinedRoomId);
 function joinScreen()
 {
 
-	window.location = 'localhost/session.html';
+	window.location = 'http://localhost/session';
 }
