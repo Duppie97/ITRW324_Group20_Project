@@ -24,7 +24,7 @@ window.onload = function(){
   function opklik()
   {
     validate();
-    window.location.href="http://localhost/session?room_name=" + roomName;
+    window.location.href="http://localhost/session?room_name=" + roomName + "&room_id=" + roomID;
 
   }
 
@@ -117,7 +117,6 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   xhttp.open(method, apiPath + table + key , false);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(JSON.stringify(myArr) + '&' + columns + '&' + crit);
-  alert('a');
 }
 
 function checkName(id)
