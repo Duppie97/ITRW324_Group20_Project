@@ -1,66 +1,62 @@
 package com.example.jaco.jamroomfinal;
 
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.*;
-
-
+import java.util.HashMap;
 import java.util.Map;
 
 public class HttpURLConnectionExample {
 
     private final String USER_AGENT = "Mozilla/5.0";
-    private Map<String,Object> map;
+	/*private Map<String,Object> map;
 
-    public HttpURLConnectionExample(){
-
-    }
-    public static void main(String[] args) throws Exception {
-        //Hierdie deel is teenwoordig vir alle GET/PUT/POST/DELETE calls na die api
-        HttpURLConnectionExample http = new HttpURLConnectionExample();
+	public static void main(String[] args) throws Exception {
+		//Hierdie deel is teenwoordig vir alle GET/PUT/POST/DELETE calls na die api
+		HttpURLConnectionExample http = new HttpURLConnectionExample();
 
 
-        //Stuur 'n GET/SELECT request en ontvang antwoord in map datatipe
-        //Die parameters is TABLE, CRITERIA.  Kyk na onderstaande voorbeeld vir leiding
-        Map<String, String> map = http.sendGet("member","`Email`='DitWerk'");		//select * from TABLE where CRITERIA
+		//Stuur 'n GET/SELECT request en ontvang antwoord in map datatipe
+		//Die parameters is TABLE, CRITERIA.  Kyk na onderstaande voorbeeld vir leiding
+		Map<String, String> map = http.sendGet("member","`Email`='DitWerk'");		//select * from TABLE where CRITERIA
 
-        //Hierdie kode toets of die spesifieke kolom se waarde bestaan en lees dit indien dit is
-        //Hierdie sal altyd saam met die GET/SELECT metode gaan
-        String key = "Email";
-        if (map.containsKey(key))
-        {
-            Object value = map.get(key);
-            System.out.println("Key : " + key +" value :"+ value);
-        }
+		//Hierdie kode toets of die spesifieke kolom se waarde bestaan en lees dit indien dit is
+		//Hierdie sal altyd saam met die GET/SELECT metode gaan
+		String key = "Email";
+		if (map.containsKey(key))
+		{
+			Object value = map.get(key);
+			System.out.println("Key : " + key +" value :"+ value);
+		}
 
 
-        //Stuur POST/INSERT request
-        //columns is die lys kolomme wat in geinsert word en values is die waardes
-        String[] columns1 = {"Email","Name"};
-        String[] values1 = {"asdasdqqq12","Jan"};
-        http.sendPost("member",columns1,values1);									//insert into Table columns values(VALUES)
+		//Stuur POST/INSERT request
+		//columns is die lys kolomme wat in geinsert word en values is die waardes
+		String[] columns1 = {"Email","Name"};
+		String[] values1 = {"asdasdqqq123","Jan"};
+		http.sendPost("member",columns1,values1);									//insert into Table columns values(VALUES)
 
-        //DELETE request
-        //Stuur TABLE en criteria as parameter
-        http.sendDelete("member","`Email`='a@a'");									//delete from TABLE where CRITERIA
+		//DELETE request
+		//Stuur TABLE en criteria as parameter
+		http.sendDelete("member","`Email`='a@a'");									//delete from TABLE where CRITERIA
 
-        //PUT/UPDATE request
-        //Ontvang colomme wat verander, waardes wat vaerander TABLE en CRITERIA
-        String[] columns2 = {"Email"};
-        String[] values2 = {"DitWerk"};
-        http.sendPut("member",columns2,values2,"`Email`='s@s'");					//update Table set(COLUMNS=VALUES) where CRITERIA
+		//PUT/UPDATE request
+		//Ontvang colomme wat verander, waardes wat vaerander TABLE en CRITERIA
+		String[] columns2 = {"Email"};
+		String[] values2 = {"DitWerk"};
+		http.sendPut("member",columns2,values2,"`Email`='s@s'");					//update Table set(COLUMNS=VALUES) where CRITERIA
 
 
 
-    }
+	}*/
 
     // HTTP GET request
-    public Map<String, String> sendGet(String table, String crit) throws Exception {
+    public Map<String, String>[] sendGet(String table, String crit) throws Exception {
 
-        String url = "http://localhost/api.php/" + table + "/" + crit;
+        String url = "http://10.0.2.2/api.php/" + table + "/" + crit;
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -89,13 +85,21 @@ public class HttpURLConnectionExample {
         //print result
         System.out.println(response.toString());
 
+        String[] arr = response.toString().split("\\},\\{");
 
-        return splitToMap(response.toString());
+        Map<String, String>[] ant = new HashMap[arr.length];
+
+        for(int i = 0; i < arr.length; i++)
+        {
+            ant[i] = splitToMap(arr[i]);
+        }
+
+        return ant;
     }
 
     public void sendDelete(String table, String crit) throws Exception {
 
-        String url = "http://localhost/api.php/" + table + "/" + crit;
+        String url = "http://10.0.2.2/api.php/" + table + "/" + crit;
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -131,7 +135,7 @@ public class HttpURLConnectionExample {
     // HTTP POST request
     public void sendPost(String table, String[] columns, String[] values) throws Exception {
 
-        String url = "http://localhost/api.php/" + table;
+        String url = "http://10.0.2.2/api.php/" + table;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -184,7 +188,7 @@ public class HttpURLConnectionExample {
     // HTTP POST request
     public void sendPut(String table, String[] columns, String[] values, String crit) throws Exception {
 
-        String url = "http://localhost/api.php/" + table + "/" + crit;
+        String url = "http://10.0.2.2/api.php/" + table + "/" + crit;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -235,8 +239,10 @@ public class HttpURLConnectionExample {
 
     private Map<String, String> splitToMap(String in)
     {
+        in = in.replaceAll("\\{","");
+        in = in.replaceAll("\\}","");
         in = in.replaceAll("\"","");
-        in = in.substring(1,in.length()-1);
+
         String[] kvps = in.split(",");
         String[] kvsv;
 
