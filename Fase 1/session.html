@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/session.css">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
+<script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
+
+	<title>Session</title>
+
+<link href="styles/app.css" rel="stylesheet" type="text/css">
+<link href="styles/install-button.css" rel="stylesheet" type="text/css">
+<h1 id = "roomName"></h1>
+</head>
+<body bgcolor="#32022F">
+<div>
+        <button type="submit" class="button button-block" name='back' value="Back" onclick="window.location.href='http://localhost/main.html'"/>Quit session</button> 
+        
+    </div>
+<div class="wrapper">
+
+      <header>
+      </header>
+
+      <section class="main-controls">
+        <canvas class="visualizer" height="60px"></canvas>
+        <div id="buttons">
+          <button class="record">Record</button>
+          <button class="stop">Stop</button>
+        </div>
+      </section>
+
+      <section class="sound-clips">
+
+
+      </section>
+
+    </div>
+
+    <label for="toggle">❔</label>
+    <input type="checkbox" id="toggle">
+    <aside>
+      <h2>How to save your audio file</h2>
+
+      <p>
+      To Save your audio recordings do the following : 
+      <ol>
+       	<li>Right click on the audio file</li>
+       	<li>Choose "Save audio as.."</li>
+       	<li>Choose a file to store your audio file</li>
+       	<li>Open your audio file with a media player of ypur choice</li>
+       </ol></p>
+
+     
+
+      
+    </aside>
+
+    <script src="scripts/install.js"></script>
+
+    <script src="scripts/mediaDevices-getUserMedia-polyfill.js"></script>
+
+    <!-- Below is your custom application script -->
+    <script src="scripts/app.js"></script>
+	<script src ="http://localhost/session.js"></script>
+
+</body>
+</html>

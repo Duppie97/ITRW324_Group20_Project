@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">""</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="title_activity_view_profiles_activities">ViewProfilesActivities</string>
+    <string name="title_activity_edit_profiles">EditProfilesActivity</string>
+</resources>

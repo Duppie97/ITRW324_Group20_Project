@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.jaco.jamroomfinal.ViewProfilesActivities"
+    tools:showIn="@layout/activity_view_profiles_activities">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name and Surname:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="196dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name and Surname:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="426dp"
+        tools:layout_editor_absoluteY="-165dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="426dp"
+        tools:layout_editor_absoluteY="-133dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email address:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="426dp"
+        tools:layout_editor_absoluteY="-104dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Instrument:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="426dp"
+        tools:layout_editor_absoluteY="-73dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount of Sessions:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="426dp"
+        tools:layout_editor_absoluteY="-42dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Band Status"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="426dp"
+        tools:layout_editor_absoluteY="-11dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="426dp"
+        tools:layout_editor_absoluteY="24dp" />
+
+    <TextView
+        android:id="@+id/AgeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="48dp" />
+
+    <TextView
+        android:id="@+id/EmailView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email address:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="196dp"
+        tools:layout_editor_absoluteY="77dp" />
+
+    <TextView
+        android:id="@+id/CurInstVIew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Instrument:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="196dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <TextView
+        android:id="@+id/AmountSessVIew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount of Sessions:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="196dp"
+        tools:layout_editor_absoluteY="139dp" />
+
+    <TextView
+        android:id="@+id/BandStatView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Band Status"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="196dp"
+        tools:layout_editor_absoluteY="170dp" />
+
+    <TextView
+        android:id="@+id/AboutView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="196dp"
+        tools:layout_editor_absoluteY="205dp" />
+
+</android.support.constraint.ConstraintLayout>
