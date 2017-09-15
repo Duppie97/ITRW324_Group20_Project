@@ -22,16 +22,14 @@
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
+        android:id="@+id/navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:menu="@menu/navigation_menu"
-        app:itemTextColor="#1df29c"
-        android:background="#71078e"
         android:layout_gravity="start"
-        app:headerLayout="@layout/navigation_header">
-
-
-
+        android:background="#71078e"
+        app:headerLayout="@layout/navigation_header"
+        app:itemTextColor="#1df29c"
+        app:menu="@menu/navigation_menu">
 
 
     </android.support.design.widget.NavigationView>
