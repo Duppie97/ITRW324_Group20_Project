@@ -9,12 +9,12 @@
     tools:showIn="@layout/activity_view_profiles_activities">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/NameSurET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name and Surname:"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="196dp"
+        tools:layout_editor_absoluteX="197dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <TextView
@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:text="Name and Surname:"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="426dp"
-        tools:layout_editor_absoluteY="-165dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/textView9"
@@ -32,8 +32,8 @@
         android:layout_height="wrap_content"
         android:text="Age:"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="426dp"
-        tools:layout_editor_absoluteY="-133dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="48dp" />
 
     <TextView
         android:id="@+id/textView10"
@@ -41,8 +41,8 @@
         android:layout_height="wrap_content"
         android:text="Email address:"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="426dp"
-        tools:layout_editor_absoluteY="-104dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="77dp" />
 
     <TextView
         android:id="@+id/textView11"
@@ -50,8 +50,8 @@
         android:layout_height="wrap_content"
         android:text="Current Instrument:"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="426dp"
-        tools:layout_editor_absoluteY="-73dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="108dp" />
 
     <TextView
         android:id="@+id/textView12"
@@ -59,8 +59,8 @@
         android:layout_height="wrap_content"
         android:text="Amount of Sessions:"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="426dp"
-        tools:layout_editor_absoluteY="-42dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="139dp" />
 
     <TextView
         android:id="@+id/textView13"
@@ -68,8 +68,8 @@
         android:layout_height="wrap_content"
         android:text="Band Status"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="426dp"
-        tools:layout_editor_absoluteY="-11dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="170dp" />
 
     <TextView
         android:id="@+id/textView14"
@@ -77,11 +77,11 @@
         android:layout_height="wrap_content"
         android:text="About:"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="426dp"
-        tools:layout_editor_absoluteY="24dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="205dp" />
 
     <TextView
-        android:id="@+id/AgeView"
+        android:id="@+id/AgeET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Age:"
@@ -90,7 +90,7 @@
         tools:layout_editor_absoluteY="48dp" />
 
     <TextView
-        android:id="@+id/EmailView"
+        android:id="@+id/EmailET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email address:"
@@ -99,7 +99,7 @@
         tools:layout_editor_absoluteY="77dp" />
 
     <TextView
-        android:id="@+id/CurInstVIew"
+        android:id="@+id/CurInstET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Current Instrument:"
@@ -108,7 +108,7 @@
         tools:layout_editor_absoluteY="108dp" />
 
     <TextView
-        android:id="@+id/AmountSessVIew"
+        android:id="@+id/AmountSessET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Amount of Sessions:"
@@ -117,7 +117,7 @@
         tools:layout_editor_absoluteY="139dp" />
 
     <TextView
-        android:id="@+id/BandStatView"
+        android:id="@+id/BandStatET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Band Status"
@@ -126,7 +126,7 @@
         tools:layout_editor_absoluteY="170dp" />
 
     <TextView
-        android:id="@+id/AboutView"
+        android:id="@+id/AboutET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="About:"
