@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "16670648045",
+    "firebase_url": "https://jamroomchat.firebaseio.com",
+    "project_id": "jamroomchat",
+    "storage_bucket": "jamroomchat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16670648045:android:e2d53ad4ecdcf76a",
+        "android_client_info": {
+          "package_name": "com.example.jaco.chat_app_toetss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16670648045-783qcil38s7s3ts9p8vd3rs2j3u5s1e9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOBjGtNyWLlox0tQOD4swHGIj1LssU9Yc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
