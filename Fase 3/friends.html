@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style>
+		table tr{
+			cursor: pointer;transition: all.25s ease-in-out;
+		}
+		table tr:hover{background-color:#1ab188;}
+
+		thead tr{
+			cursor: pointer;transition: all.25s ease-in-out;
+		}
+		}
+
+	</style>
+
+	<title>Friends</title>
+	<meta charset="utf-8" content="width=device-width, initial-scale=1">
+  	<title>Friends</title>
+  	<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<body background="img/wbg.png">
+<form>
+<div id= "nav">
+  <div id = "nav_wrapper2">
+  <ul>
+            <li><a>Menu</a>
+                <ul>
+                  <li><a>Profile</a></li>
+                  <li><a>Friends</a></li>
+                  <li><a>Messages</a></li>
+                  <li><a>Logout</a></li>
+                </ul>
+            </li>
+            
+          </ul>
+  </div>        
+</div>
+
+<div class="form">
+        <div id="Friends">   
+
+          
+          <h1 style="text-align: left;">FRIENDS</h1><br><br>
+           
+
+		<div class="field-wrap">
+           <label style="text-align: left;" >
+           	Friend list
+           </label>
+
+           <table id="table" border ="1" class="table_friends" cellspacing="0" width="25%" ">   
+				<tr> 
+					<th>friends</th>
+					
+            	</tr>
+            </table>
+
+        <label style="text-align: right;" >
+            Friend requests
+           </label>
+
+             <table id="table_req" border ="1"  class="table_req" cellspacing="0" width="25%" ">   
+        <tr> 
+          <th>Friend requests</th>
+          
+              </tr>
+            </table>
+
+          
+           
+            	
+
+
+   		 
+ 
+        </div>
+          
+        </div>
+
+
+</form>
+
+ <script type="text/javascript">
+    var activeUser = localStorage.getItem("emailid");
+    findFriend();
+    friend_req();
+      
+      function findFriend()
+      {
+            
+          //alert(activeUser);
+
+          var tables = "friends";                               
+            var crit = "`Email_Member_1` = '" + activeUser + "'";
+            var method = "GETFIL";
+            var xhttp = new XMLHttpRequest();
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+              apiPath = apiPath2;
+            }
+            xhttp.open(method, "http://localhost/api.php/" + tables, false);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.setRequestHeader("Authorization", "Basic " + btoa(activeUser + ":" + localStorage.getItem("passwordid")));
+            xhttp.send("&*&" + crit);
+            
+            var response = JSON.parse("["+xhttp.responseText+"]");
+            
+          
+          var array=[];
+          for(var i = 0; i < response.length; i++)
+            {
+
+              array[i] = response[i]["Email_Member_2"];
+        
+            }
+
+          
+              
+               
+                    table = document.getElementById("table");
+     for(var i = 0; i < array.length; i++)
+               {
+                   // create a new row
+                   var newRow = table.insertRow(table.length);
+                   for(var j = 0; j < 1; j++)
+                   {
+                       // create a new cell
+                       var cell = newRow.insertCell(j);
+                       
+                       // add value to the cell
+                       cell.innerHTML = array[i];
+                   }
+               }
+
+      }
+
+
+      function friend_req()
+      {
+
+          var status ="PENDING";
+          var tables = "requests";                               
+            var crit = "`requestee` = '" + activeUser + "'" +"AND" +"`status` = '"+ status + "'";
+            var method = "GETFIL";
+            var xhttp = new XMLHttpRequest();
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+              apiPath = apiPath2;
+            }
+            xhttp.open(method, "http://localhost/api.php/" + tables, false);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.setRequestHeader("Authorization", "Basic " + btoa(activeUser + ":" + localStorage.getItem("passwordid")));
+            xhttp.send("&*&" + crit);
+            
+            var response = JSON.parse("["+xhttp.responseText+"]");
+            
+          
+          var array2=[];
+          for(var i = 0; i < response.length; i++)
+            {
+
+              array2[i] = response[i]["requester"];
+        
+            }
+
+          
+              
+               
+                    table2 = document.getElementById("table_req");
+     for(var i = 0; i < array2.length; i++)
+               {
+                   // create a new row
+                   var newRow = table2.insertRow(table2.length);
+                   for(var j = 0; j < 1; j++)
+                   {
+                       // create a new cell
+                       var cell = newRow.insertCell(j);
+                       
+                       // add value to the cell
+                       cell.innerHTML = array2[i];
+                   }
+               }
+
+      }
+
+      
+
+        </script>
+
+
+
+        
+      
+</div> <!-- /form -->
+
+
+</body>
+</html>
