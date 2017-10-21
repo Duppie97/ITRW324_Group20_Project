@@ -1,0 +1,484 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  
+  font-family: 'Titillium Web', sans-serif;
+  color: #ffffff;
+  font-weight: 1000;
+  font-size: 1000;
+}
+
+a {
+  text-decoration: none;
+  color: #1ab188;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+a:hover {
+  color: #179b77;
+}
+
+.form {
+  background: rgba(50, 2, 47, 1.0);
+  padding: 80px;
+  max-width: 1000px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 1.0);
+}
+
+.form-index {
+  background: rgba(50, 2, 47, 1.0);
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 1.0);
+}
+
+
+
+.tab-group {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+.tab-group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.tab-group li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 20px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+.tab-group li a:hover {
+  background: #179b77;
+  color: #ffffff;
+}
+.tab-group .active a {
+  background: #1ab188;
+  color: #ffffff;
+}
+
+.tab-content > div:last-child {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 300;
+  margin: 0 0 40px;
+  word-wrap: normal;
+}
+
+h2 {
+  color: #ffffff;
+  font-weight: 100;
+  font-size: 10;
+}
+
+label {
+	position: absolute;
+	-webkit-transform: translateY(6px);
+	transform: translateY(6px);
+	left: 0px;
+	color: rgba(255, 255, 255, 0.5);
+	-webkit-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+	-webkit-backface-visibility: hidden;
+	pointer-events: none;
+	font-size: 22px;
+	width: 584px;
+	top: -42px;
+}
+
+label .req {
+  margin: 2px;
+  color: #1ab188;
+}
+
+label.active {
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  left: 2px;
+  font-size: 14px;
+}
+label.active .req {
+  opacity: 0;
+}
+
+label.highlight {
+  color: #ffffff;
+}
+
+input, textarea {
+  font-size: 22px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  background: none;
+  background-image: none;
+  border: 1px solid #a0b3b0;
+  color: #ffffff;
+  border-radius: 0;
+  -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+input:focus, textarea:focus {
+  outline: 0;
+  border-color: #1ab188;
+}
+
+textarea {
+  border: 2px solid #a0b3b0;
+  resize: vertical;
+}
+
+.field-wrap {
+	position: relative;
+	margin-bottom: 100px;
+	margin-top: 10px;
+}
+
+.field-wrap-index {
+ position: relative;
+  margin-bottom: 40px;
+  
+}
+
+.top-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.top-row > div {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+}
+.top-row > div:last-child {
+  margin: 0;
+}
+
+.button {
+  border: 0;
+  outline: none;
+  border-radius: 10;
+  padding: 20;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+.button:hover, .button:focus {
+  background: #179b77;
+}
+
+.report-button {
+  border: 0;
+  outline: none;
+  border-radius: 10;
+  padding: 20;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #b70e36;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+
+.create-button {
+border: 0;
+  outline: none;
+  border-radius: 10;
+  padding: 20;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+
+.index-button {
+border: 0;
+  outline: none;
+  border-radius: 10;
+  padding: 20;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+
+
+
+
+.button-block {
+  display: block;
+  width: 20%;}
+
+  .button-block-index {
+  display: block;
+  width: 50%;}
+
+  .button-block-create {
+  display: block;
+  width: 50%;}
+
+.button-block-main{
+  display: block;
+  width: 50%;
+  height: 200px;
+}
+
+.forgot {
+  margin-top: -20px;
+  text-align: right;
+}
+
+
+div.gallery {
+  width: 90px;
+  padding: 5px;
+}
+
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 13.33333px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+}
+.option-input:hover {
+  background: #9faab7;
+}
+.option-input:checked {
+  background: #40e0d0;
+}
+.option-input:checked::before {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  content: '✔';
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align: center;
+  line-height: 40px;
+}
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #40e0d0;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+.option-input.radio {
+  border-radius: 50%;
+}
+.option-input.radio::after {
+  border-radius: 50%;
+}
+
+input[type=checkbox]
+{
+  -webkit-appearance:checkbox;
+}
+
+.squaredFour {
+  width: 20px;
+  position: relative;
+  margin: 20px auto;
+  label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fcfff4;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    &:after {
+      content: '';
+      width: 9px;
+      height: 5px;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      border: 3px solid #333;
+      border-top: none;
+      border-right: none;
+      background: transparent;
+      opacity: 0;
+      transform: rotate(-45deg);
+    }
+    &:hover::after {
+      opacity: 0.5;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }    
+}
+
+.inline-main {
+   display:inline-block;
+   margin-right:20px;
+   width: 100%;
+   
+}
+
+.inline-join {
+   display:inline-block;
+   margin-right:20px;
+   width: 20%;
+   
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+ul
+{
+  margin : 0px;
+  padding: 0px;
+  list-style :none;
+  
+
+
+}
+ul li
+{
+  float : left;
+  width: 100px;
+  height : 40px;
+  
+  background-color: #179b77;
+  line-height: 40px;
+  text-align: Center;
+  font-size: 20px 
+  
+}
+
+ul li a
+{
+  text-decoration: none;
+  color: rgba(50, 2, 47, 1.0); 
+  display : block;
+  opacity: 1;
+}
+
+ul li a:hover
+{
+  background-color: white; 
+  cursor: pointer;
+}
+
+ul li ul li
+{
+  display : none;
+}
+
+ul li:hover ul li
+{
+  display: block;
+}
+
+
+#nav
+{
+  background-color :#222;
+}
+
+#nav_wrapper2
+{
+  width : 960px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+

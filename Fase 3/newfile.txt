@@ -1,0 +1,1 @@
+select * from `friends` WHERE `Email_Member_1` = 'allersjohann@gmail.com'

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8" content="width=device-width, initial-scale=1">
+  <title>CreateSession</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+      <style type="text/css">
+      body,td,th {
+	font-family: "Titillium Web", sans-serif;
+	font-size: large;
+}
+      </style>
+</head>
+
+<body>
+<body background="img/wbg.png">
+
+
+
+  <div class="form">
+        <div id="create">   
+          <h1>Create your own session!</h1>
+          <label>
+              Introduction
+            </label> 
+            <p>
+              This is a test of skill and power, rise to the top and claim victory over your enemies.  Oh, wait, that's the wrong idea...
+              Okay just have fun!
+            </p>
+            <br><br>
+          
+          <iframe name="votar" style="display:none ;"></iframe>
+
+          <form action="/" method="post" target="votar">
+		  
+          <div class="field-wrap">
+            <label>
+              Enter room name<span class="req">*</span>
+            </label>
+            <input type="name"required autocomplete="off" id="name"/>
+          </div>
+		  		 
+		          
+          <div class="field-wrap">
+            <label>
+              What kind of session do you wish to create?<span class="req">*</span>
+            </label>
+            <Select name="session_type" id = "session_type">
+			<option value="rock">Rock</option>
+			<option value = "jazz">Jazz</option>
+			<option value="punk">Punk</option>
+		</Select>
+          </div>
+          
+
+<div class="field-wrap">
+      <label>Select the instruments that you allow in this session<span class="req">*</span></label><br><br>
+            <img autocomplete="off" id="acoustic-guitar" onclick="changeImage('acoustic-guitar')" onmouseover="hoverImage('acoustic-guitar')" onmouseout="hoverOff('acoustic-guitar')" value="false" class="gallery" src=file:///C:/wamp64/www/icons/png/acoustic-guitar.png/>
+            <img autocomplete="off" id="electric-guitar" onclick="changeImage('electric-guitar')" onmouseover="hoverImage('electric-guitar')" onmouseout="hoverOff('electric-guitar')" value="false" class="gallery"/>
+            <img autocomplete="off" id="drum-set" onclick="changeImage('drum-set')" onmouseover="hoverImage('drum-set')" onmouseout="hoverOff('drum-set')" value="false" class="gallery"/>
+            <img autocomplete="off" id="bass-guitar" onclick="changeImage('bass-guitar')" onmouseover="hoverImage('bass-guitar')" onmouseout="hoverOff('bass-guitar')" value="false" class="gallery"/>
+            <img autocomplete="off" id="cymbal" onclick="changeImage('cymbal')" onmouseover="hoverImage('cymbal')" onmouseout="hoverOff('cymbal')" value="false" class="gallery"/>
+            <img autocomplete="off" id="djembe" onclick="changeImage('djembe')" onmouseover="hoverImage('djembe')" onmouseout="hoverOff('djembe')" value="false" class="gallery"/>
+            <img autocomplete="off" id="flute" onclick="changeImage('flute')" onmouseover="hoverImage('flute')" onmouseout="hoverOff('flute')" value="false" class="gallery"/>
+            <img autocomplete="off" id="harmonica" onclick="changeImage('harmonica')" onmouseover="hoverImage('harmonica')" onmouseout="hoverOff('harmonica')" value="false" class="gallery"/>
+            <img autocomplete="off" id="harp" onclick="changeImage('harp')" onmouseover="hoverImage('harp')" onmouseout="hoverOff('harp')" value="false" class="gallery"/>
+            <img autocomplete="off" id="keyboard" onclick="changeImage('keyboard')" onmouseover="hoverImage('keyboard')" onmouseout="hoverOff('keyboard')" value="false" class="gallery"/>
+            <img autocomplete="off" id="maracas" onclick="changeImage('maracas')" onmouseover="hoverImage('maracas')" onmouseout="hoverOff('maracas')" value="false" class="gallery"/>
+            <img autocomplete="off" id="microphone" onclick="changeImage('microphone')" onmouseover="hoverImage('microphone')" onmouseout="hoverOff('microphone')" value="false" class="gallery"/>
+            <img autocomplete="off" id="piano" onclick="changeImage('piano')" onmouseover="hoverImage('piano')" onmouseout="hoverOff('piano')" value="false" class="gallery"/>
+            <img autocomplete="off" id="saxophone" onclick="changeImage('saxophone')" onmouseover="hoverImage('saxophone')" onmouseout="hoverOff('saxophone')" value="false" class="gallery"/>
+            <img autocomplete="off" id="tambourine" onclick="changeImage('tambourine')" onmouseover="hoverImage('tambourine')" onmouseout="hoverOff('tambourine')" value="false" class="gallery"/>
+            <img autocomplete="off" id="trumpet" onclick="changeImage('trumpet')" onmouseover="hoverImage('trumpet')" onmouseout="hoverOff('trumpet')" value="false" class="gallery"/>
+            <img autocomplete="off" id="triangle" onclick="changeImage('triangle')" onmouseover="hoverImage('triangle')" onmouseout="hoverOff('triangle')" value="false" class="gallery"/>
+            <img autocomplete="off" id="ukelele" onclick="changeImage('ukelele')" onmouseover="hoverImage('ukelele')" onmouseout="hoverOff('ukelele')" value="false" class="gallery"/>
+            <img autocomplete="off" id="violin" onclick="changeImage('violin')" onmouseover="hoverImage('violin')" onmouseout="hoverOff('violin')" value="false" class="gallery"/>
+            <img autocomplete="off" id="xylophone" onclick="changeImage('xylophone')" onmouseover="hoverImage('xylophone')" onmouseout="hoverOff('xylophone')" value="fasle" class="gallery"/>
+
+
+      
+
+
+
+
+            
+		<div>
+				<button type="submit" class="create-button button-block-create" name="go" onclick="opklik()" value="Start Jamming!" />Start Jamming!</button>
+			<br><br>
+				<button type="submit" class="create-button button-block-create" name="retreat" value="Retreat" onclick="window.location.href='http://localhost/main.html'"/>Retreat</button>	
+				
+		</div>
+          </form>
+
+        </div>
+      
+</div> <!-- /form -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src ="session_create.js"></script>
+
+
+
+</body>
+</html>
