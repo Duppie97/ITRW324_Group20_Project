@@ -13,6 +13,8 @@
 		}
 		}
 
+
+
 	</style>
 
 	<title>Friends</title>
@@ -42,6 +44,7 @@
   </div>        
 </div>
 
+
 <div class="form">
         <div id="Friends">   
 
@@ -56,7 +59,7 @@
 
            <table id="table" border ="1" class="table_friends" cellspacing="0" width="25%" ">   
 				<tr> 
-					<th>friends</th>
+					
 					
             	</tr>
             </table>
@@ -67,17 +70,27 @@
 
              <table id="table_req" border ="1"  class="table_req" cellspacing="0" width="25%" ">   
         <tr> 
-          <th>Friend requests</th>
+          
           
               </tr>
             </table>
 
           
-           
-            	
 
+          <!-- dialog box -->
+          <div id="white-background">
+          </div>
 
-   		 
+          <div id="dlgbox">
+              <div id="dlg-header">Please Confirm</div>
+              <div id="dlg-body">Do you want to accept this friend request ?</div>
+              <div id="dlg-footer">
+                  <button onclick="dlgOK()">Yes</button>
+                  <button onclick="dlgCancel()">No</button>
+              </div>
+          </div>
+
+          
  
         </div>
           
@@ -87,7 +100,10 @@
 </form>
 
  <script type="text/javascript">
+
     var activeUser = localStorage.getItem("emailid");
+    var selectedUser="";
+    var rIndex;
     findFriend();
     friend_req();
       
@@ -182,10 +198,140 @@
                        
                        // add value to the cell
                        cell.innerHTML = array2[i];
+                         
                    }
                }
+               requestClick();
 
       }
+
+      function requestClick()
+      {
+        
+
+        tb = document.getElementById("table_req");
+        for(var i=1;i< tb.rows.length;i++)
+        {
+          
+          tb.rows[i].onclick=function()
+          {
+            rIndex =this.rowIndex;
+           alert(rIndex);
+            selectedUser = tb.rows[rIndex].cells[0].innerHTML;
+            
+            showDialog();
+
+
+
+          };
+
+        }
+      }
+
+       function dlgCancel(){
+        dlgHide();
+        alert("friend has been declined");
+        
+        alert(selectedUser);
+        dltReq(selectedUser);
+        //Remove request from request table
+
+    }
+    function dlgOK(){
+        dlgHide();
+         alert("friend has been added");
+         //Updat table requeste to ACCEPT
+         dltReq(selectedUser);
+         addFriend(selectedUser);
+        
+         //Then run method to test for accept and move to friends.
+    }
+    function dlgHide(){
+        var whitebg = document.getElementById("white-background");
+        var dlg = document.getElementById("dlgbox");
+        whitebg.style.display = "none";
+        dlg.style.display = "none";
+    }
+    function showDialog(){
+        var whitebg = document.getElementById("white-background");
+        var dlg = document.getElementById("dlgbox");
+        whitebg.style.display = "block";
+        dlg.style.display = "block";
+        var winWidth = window.innerWidth;
+        dlg.style.left = (winWidth/2) - 480/2 + "px";
+        dlg.style.top = "150px";
+    }
+
+    function dltReq(slUser)
+    {
+      alert(slUser);
+         //SELECT * FROM table
+            var table = "requests";
+
+
+
+            //INSERT INTO table (column) VALUES (value)   -> format {'column1' : 'value1', 'column2' : 'value2'}
+            var myArr = {'': ''};
+
+            //SELECT columns FROM table                   -> format "&column1,column2,column3"
+            var columns = "requester";
+
+            //WHERE crit                                  -> format "&column1=valueA AND column2=valueB"
+            var crit = "`requester` = '" + slUser + "'";
+
+            //GET, PUT, POST, DELETE, GETFIL(filter)      -> GET = SELECT * FROM table WHERE ID=key
+            //                                            -> PUT = UPDATE table SET column1=value1, column2=value2... WHERE ID=key
+            //                                            -> POST = INSERT INTO table(column1,column2...) VALUES (value1,value2...)
+            //                                            -> DELETE = DELETE FROM table WHERE ID=key
+            //                                            -> GETFIL = SELECT columns FROM table WHERE crit
+            var method = "DELETE";
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open(method, "http://localhost/api.php/" + table , false);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(JSON.stringify(myArr) +"&"+ columns +"&"+ crit);
+            var response = JSON.parse(xhttp.responseText);
+    }
+
+  
+    function addFriend(slUser)
+    {
+       var table = "friends";
+       alert(activeUser + " "+ slUser);
+
+
+
+            //INSERT INTO table (column) VALUES (value)   -> format {'column1' : 'value1', 'column2' : 'value2'}
+            var myArr = {'Email_Member_1': activeUser,'Email_Member_2' : slUser};
+
+            //SELECT columns FROM table                   -> format "&column1,column2,column3"
+            var columns = "";
+
+            //WHERE crit                                  -> format "&column1=valueA AND column2=valueB"
+            
+
+            //GET, PUT, POST, DELETE, GETFIL(filter)      -> GET = SELECT * FROM table WHERE ID=key
+            //                                            -> PUT = UPDATE table SET column1=value1, column2=value2... WHERE ID=key
+            //                                            -> POST = INSERT INTO table(column1,column2...) VALUES (value1,value2...)
+            //                                            -> DELETE = DELETE FROM table WHERE ID=key
+            //                                            -> GETFIL = SELECT columns FROM table WHERE crit
+            var method = "POST";
+alert("1");
+            var xhttp = new XMLHttpRequest();
+            xhttp.open(method, "http://localhost/api.php/" + table , false);
+            alert("2");
+            xhttp.setRequestHeader("Content-type", "application/json");
+            alert("3");
+            xhttp.send(JSON.stringify(myArr) +"&"+ columns +"&");
+            alert(xhttp.responseText);
+            var response = JSON.parse(xhttp.responseText);
+
+            findFriend();
+
+    }
+
+
+
 
       
 
