@@ -25,13 +25,23 @@ a:hover {
 }
 
 .form {
-  background: rgba(50, 2, 47, 1.0);
+  background: rgba(50, 2, 47, 0.98);
   padding: 80px;
   max-width: 1000px;
   margin: 40px auto;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 1.0);
 }
+
+.form2 {
+  background: rgb(151,154,170);
+  padding: 80px;
+  max-width: 1000px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 1.0);
+}
+
 
 .form-index {
   background: rgba(50, 2, 47, 1.0);
