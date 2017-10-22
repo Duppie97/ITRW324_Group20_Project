@@ -5,6 +5,10 @@
   <title>Sign-Up/Login Form</title>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+
+    <!-- The main CSS file -->
+    <link href="assets/css/style.css" rel="stylesheet" />
 
   
       <link rel="stylesheet" href="css/style.css">
@@ -17,7 +21,7 @@
 
 <iframe name="votar" style="display:none ;"></iframe>
 
-          <form action="/" method="post" target="votar">
+          <form action="upload.php" enctype="multipart/form-data" method="post" target="votar">
   <div class="form-index">
       
       <ul class="tab-group">
@@ -62,6 +66,13 @@
             <input type="password" required autocomplete="off" id="password"/>
           </div>
           
+          <div class="field-wrap">
+            <label>
+              Status
+            </label>
+            <input type="text" required autocomplete="off" id="status"/>
+          </div>
+
 
 
       <div class="field-wrap">
@@ -105,13 +116,49 @@
             <input type="radio" required autocomplete="off" name="band-status" value="need-a-band" class="option-input radio"/>
             Need a band<br>
             <input type="radio" required autocomplete="off" name="band-status" value="it's-complicated" class="option-input radio"/>
-            It's complicated<br><br><br>
+            It's complicated<br>
             </div>
             
             <div class="field-wrap">
-            <label>Choose an audio file to show off you skills</label><br><br>
-            <input type="file" name="profile-clip" id="audiof" accept="audio/*" >
-            </div>
+
+      
+
+    
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+
+    
+    <link href="assets/css/style.css" rel="stylesheet" />
+ 
+
+  <body>
+
+
+
+
+
+
+      <div id="drop">
+        
+
+
+        <a>Select a profile picture</a>
+        <p id="imgp">No file selected</p>
+        <input type="file" name="upl" id="subImage" accept="image/*"/>
+      </div>
+    <ul>
+				<!-- The file uploads will be shown here -->
+			</ul>
+
+  </body>
+
+           
+                
+            <!-- JavaScript Includes -->
+            
+
+
+    <!-- Only used for the demos. Please ignore and remove. --> 
+        </div>
 
 		  
           <button type="submit" class="button button-block-index" name='go' onclick = "validate()" />Get Started</button>
@@ -145,7 +192,7 @@
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
 
-          <button type="button" class="button button-block-index" name='go2' onclick="logIn()" />Log In</button>
+          <button type="button" class="buttonbutton-block-index" name='go2' onclick="logIn()" />Log In</button>
           </form>
 
         </div>
@@ -155,7 +202,16 @@
       </form>
 </div> <!-- /form -->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <script src="assets/js/jquery.knob.js"></script>
 
+            <!-- jQuery File Upload Dependencies -->
+            <script src="assets/js/jquery.ui.widget.js"></script>
+            <script src="assets/js/jquery.iframe-transport.js"></script>
+            <script src="assets/js/jquery.fileupload.js"></script>
+            
+            <!-- Our main JS file -->
+            <script src="assets/js/script.js"></script>
     <script src="index.js"></script>
 
 </body>

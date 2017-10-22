@@ -19,15 +19,15 @@
       </style>
 </head>
 
-<body background="img/wbg.png">
+<body background="img/wbg.png" onload="populateSelect()">
 
-<div id= "nav">
+<div id= "nav" class ="Menu">
   <div id = "nav_wrapper2">
   <ul>
-            <li><a>Menu</a>
+            <li class = mn><a>Menu</a>
                 <ul>
                   <li><a>Profile</a></li>
-                  <li><a href ="friends.html">Friends</a></li>
+                  <li><a>Friends</a></li>
                   <li><a>Messages</a></li>
                   <li><a>Logout</a></li>
                 </ul>
@@ -50,7 +50,7 @@
               Choose your current instrument
             </label>
 
-            <Select name="current_instrument" id="current_instrument" width ="50px">
+            <Select name="current_instrument" id="current_instrument" width ="50px" onchange="saveCurrent()">
 
             	
             </Select>

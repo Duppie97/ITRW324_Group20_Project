@@ -36,7 +36,7 @@ function fill(criteria)
     
     var count = 1;
     
-      var table = "session_instruments";
+      var table = "create_session";
       var key = "";
       var myArr = null;
       var columns = "*";
@@ -49,10 +49,10 @@ function fill(criteria)
       var xhttp = new XMLHttpRequest();
       xhttp.open(method, apiPath + table + key , false);
       xhttp.setRequestHeader("Content-type", "application/json");
-      xhttp.send(JSON.stringify(myArr) + '&' + columns + '&' + crit);
+      xhttp.send('&' + columns + '&' + crit);
 
       if(xhttp.responseText != '')
-        var res = JSON.parse("["+xhttp.responseText+"]");
+        var res = JSON.parse(xhttp.responseText);
 
     for(var i = 0; i < res.length; i++)
     {
@@ -92,6 +92,7 @@ var table = "create_session";
       xhttp.open(method, apiPath + table + key , false);
       xhttp.setRequestHeader("Content-type", "application/json");
       xhttp.send(JSON.stringify(myArr) + '&' + columns + '&' + crit);
+      
       if(xhttp.responseText != "")
       {
         var res2 = JSON.parse(xhttp.responseText);
@@ -103,8 +104,37 @@ var table = "create_session";
 
         cel1.innerHTML = k+1;
         cel2.innerHTML = res2[k]["Room_Name"];
-        cel3.innerHTML = localStorage.getItem("currInst");
+        
         cel4.innerHTML = res2[k]["Room_Type"];
+
+        var table = "session_instruments";
+        var key = "";
+        var myArr = null;
+        var columns = "*";
+        var crit = "`Room_ID`='"+ res2[k]["Room_ID"] +"'";
+        var method = "GETFIL";
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+              apiPath = apiPath2;
+            }
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open(method, apiPath + table + key , false);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send('&' + columns + '&' + crit);
+
+        var r = JSON.parse("[" + xhttp.responseText + "]");
+        var instrumentList = "";
+
+
+        for(i=0;i<r.length;i++)
+        {
+          
+            instrumentList = instrumentList + r[i]["Inst_Needed"] + ", ";
+        }
+
+        instrumentList = instrumentList.substring(0, instrumentList.length - 2);
+
+        cel3.innerHTML = instrumentList;
       }
       
 
@@ -145,14 +175,14 @@ function activateClick()
               name = res['Name'];
               }
             rIndex = this.rowIndex;
-            id = this.cells[0].innerHTML;
+            id = this.cells[0].innerHTML - 1;
             room = this.cells[1].innerHTML;
             inst = this.cells[2].innerHTML;
             gnre = this.cells[3].innerHTML;
 
             var xhttp = new XMLHttpRequest();
-              var table = "user_instrument";
-              var myArr = {'Room_Num' : arr[id],'Member_Email': localStorage.getItem('emailid'),'Member_Name': name};
+              var table = "members_active";
+              var myArr = {'Room_ID' : arr[id],'Member_Email': localStorage.getItem('emailid'),'Member_Name': name};
               var method = "POST";
 
              if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {

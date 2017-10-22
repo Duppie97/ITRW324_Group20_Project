@@ -23,6 +23,7 @@ window.onload = function(){
 
   function opklik()
   {
+
     validate();
     window.location.href="http://localhost/session?room_name=" + roomName + "&room_id=" + roomID;
 
@@ -65,12 +66,13 @@ var roomType = document.getElementById("session_type").value;
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     apiPath = apiPath2;
 }
+
   var xhttp = new XMLHttpRequest();
   xhttp.open(method, apiPath + table + key , false);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(JSON.stringify(myArr) + '&' + columns + '&' + crit);
   //var response = JSON.parse(xhttp.responseText);
-
+ 
 
   activeMember();
   $( '.gallery' ).each( function ( ) {
@@ -105,7 +107,7 @@ function activeMember()
   checkName(localStorage.getItem("emailid"));
   var table = "members_active";
   var key = "";
-  var myArr = {'Room_Num': roomID, 'Member_Name' : name, 'Member_Email'  : localStorage.getItem("emailid") };
+  var myArr = {'Room_Id': roomID, 'Member_Name' : name, 'Member_Email'  : localStorage.getItem("emailid") };
   var columns = "";
   var crit = "";
   var method = "POST";
@@ -117,6 +119,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   xhttp.open(method, apiPath + table + key , false);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(JSON.stringify(myArr) + '&' + columns + '&' + crit);
+  
 }
 
 function checkName(id)
