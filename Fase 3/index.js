@@ -89,13 +89,20 @@ function hoverOff(id) {
 function validate()
 {
   validate2();
-  //window.location.href="http://localhost/main";
+  window.location.href="http://localhost/main";
 }
 
 function chng()
 {
 	window.location.href="http://localhost/main";
 }
+
+/*$('#profp').change( function(event) {
+    $("img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));
+    alert("nou");
+    alert($("img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))[0].src);
+    alert(document.getElementById("cymbal").src);
+});*/
 
 function validate2()
 {
@@ -106,10 +113,15 @@ function validate2()
 
   if(validateEmail()==true)
   {
-    alert(document.getElementById("profp").val());
+
+
+    var imagep = document.getElementById("imgp").innerHTML;
+    if(imagep == "No file selected")
+      imagep = "";
+
     //var profPath = document.getElementById("profp").
   var table = "member";
-  var myArr = {'Name': document.getElementById("name").value, 'Surname': document.getElementById("surname").value,'Email': document.getElementById("email").value,'Password': document.getElementById("password").value,'Band_Stat': $('input[name=band-status]:checked').val(),'Audio_Prof': document.getElementById("audiof").value};
+  var myArr = {'Name': document.getElementById("name").value, 'Surname': document.getElementById("surname").value,'Email': document.getElementById("email").value,'Password': document.getElementById("password").value,'Band_Stat': $('input[name=band-status]:checked').val(), 'Status':document.getElementById("status").value, 'PicturePath':imagep};
   var method = "POST";
   var xhttp = new XMLHttpRequest();
   xhttp.open(method, apiPath + table , false);
@@ -122,7 +134,6 @@ function validate2()
 
   var response = xhttp.responseText;
 
-  console.log(response);
 
   
 
@@ -136,12 +147,21 @@ function validate2()
       i = i + 1;
     }
   });
+
+
+
   chng();
   }
 
 
   
 }
+
+$('#subImage').change( function(event) {
+    document.getElementById("imgp").innerHTML = $("#subImage")[0].files[0].name;
+});
+
+
 
 function validateInstruments(id, i)
 {
@@ -174,7 +194,6 @@ function validateEmail()
   xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("email").value + ":" + document.getElementById("password").value));
   xhttp.send("&Email&" + crit);
   var response = xhttp.responseText;
-  alert(response);
   if(Object.keys(response).length > 0)
   {
     alert(response);
@@ -216,7 +235,7 @@ function logIn()
     {
       localStorage.setItem("emailid",document.getElementById("logemail").value);
       localStorage.setItem("passwordid",document.getElementById("logpassword").value);
-      alert(localStorage.getItem("emailid"));
+      
       chng();
     }
     else
@@ -230,6 +249,69 @@ else
 alert("No member found");
 
 }
+
+function populateSelect()
+{
+  
+  var table = "user_instrument";                               
+  var crit = "`Email` = '" + localStorage.getItem("emailid") + "'";
+  var method = "GETFIL";
+  var xhttp = new XMLHttpRequest();
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    apiPath = apiPath2;
+  }
+  xhttp.open(method, apiPath + table, false);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.setRequestHeader("Authorization", "Basic " + btoa(localStorage.getItem("emailid") + ":" + localStorage.getItem("passwordid")));
+  xhttp.send("&*&" + crit);
+  var bool = true;
+  var response = xhttp.responseText;
+    var json = JSON.parse("[" + response + "]");
+
+
+
+
+
+
+  //var select = document.getElementById("current_instrument");
+
+    var i;
+
+    for(i = 0; i<json.length;i++)
+    {
+      var o = new Option(json[i]["Instrument"], json[i]["Instrument"]);
+      $(o).html(json[i]["Instrument"]);
+      $("#current_instrument").append(o);
+      
+      //select.options[i] = new Option(json[i]["Instrument"],i);
+    }
+
+    saveCurrent();
+
+    
+ 
+}
+
+function saveCurrent()
+{
+  var key = "/" +localStorage.getItem("emailid");
+  var table = "member";
+  var myArr = {'Current_Inst': document.getElementById("current_instrument").value};
+  var method = "PUT";
+  var crit = "`Email` = '" + localStorage.getItem("emailid") + "'";
+  var xhttp = new XMLHttpRequest();
+  xhttp.open(method, apiPath + table, false);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.setRequestHeader("Authorization", "Basic " + btoa(localStorage.getItem("emailid") + ":" + localStorage.getItem("passwordid")));
+  xhttp.send(JSON.stringify(myArr)+ "&&" + crit);
+
+  localStorage.setItem("emailid",document.getElementById("email").value);
+  localStorage.setItem("passwordid",document.getElementById("password").value);
+
+  var response = xhttp.responseText;
+}
+
+
 
 $( document ).ready(function() {
   $( '.gallery' ).each( function ( ) {

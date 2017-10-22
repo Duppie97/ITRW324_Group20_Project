@@ -3,6 +3,8 @@ function useDB()
   //SELECT * FROM table
   var table = "";
 
+  //WHERE id=key                                -> format "/5"
+  var key = "";
 
   //INSERT INTO table (column) VALUES (value)   -> format {'column1' : 'value1', 'column2' : 'value2'}
   var myArr = {'': ''};
@@ -21,8 +23,8 @@ function useDB()
   var method = "";
 
   var xhttp = new XMLHttpRequest();
-  xhttp.open(method, "http://localhost/api.php/" + table , false);
+  xhttp.open(method, "http://localhost/api.php/" + table + key , false);
   xhttp.setRequestHeader("Content-type", "application/json");
-  xhttp.send(JSON.stringify(myArr) +"&"+ columns +"&"+ crit);
+  xhttp.send(JSON.stringify(myArr) + columns + crit);
   var response = JSON.parse(xhttp.responseText);
 }
