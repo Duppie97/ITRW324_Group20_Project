@@ -17,7 +17,7 @@
 
 	</style>
 
-	<title>Friends</title>
+	
 	<meta charset="utf-8" content="width=device-width, initial-scale=1">
   	<title>Friends</title>
   	<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
@@ -28,36 +28,41 @@
 
 	<body background="img/wbg.png">
 <form>
-<div id= "nav">
-  <div id = "nav_wrapper2">
-  <ul>
-            <li><a>Menu</a>
-                <ul>
-                  <li><a>Profile</a></li>
-                  <li><a>Friends</a></li>
-                  <li><a>Messages</a></li>
-                  <li><a>Logout</a></li>
+
+ <nav class="nav_wrapper2">
+   <ul >
+            <li ><a>Menu</a>
+                <ul >
+                  <li style="font-weight: bold;" ><a>Profile</a></li>
+                  <li  style="font-weight: bold;"><a href ="friends.html">Friends</a></li>
+                  <li style="font-weight: bold;"><a>Messages</a></li>
+                  <li style="font-weight: bold;"><a>Logout</a></li>
                 </ul>
             </li>
             
           </ul>
-  </div>        
-</div>
+   
+ </nav>
+ 
+ 
+ 
+
+<title>Friends</title>
 
 
 <div class="form">
         <div id="Friends">   
 
           
-          <h1 style="text-align: left;">FRIENDS</h1><br><br>
+          <br><br><h1 style="text-align:left;">FRIENDS</h1><br><br>
            
 
-		<div class="field-wrap">
+		<div class="field-wrap" style="text-align: center;">
            <label style="text-align: left;" >
            	Friend list
            </label>
 
-           <table id="table" border ="1" class="table_friends" cellspacing="0" width="25%" ">   
+           <table id="table" border ="3" class="table_friends" cellspacing="0" width="40%" style="margin: margin-right: 50px ">   
 				<tr> 
 					
 					
@@ -68,11 +73,26 @@
             Friend requests
            </label>
 
-             <table id="table_req" border ="1"  class="table_req" cellspacing="0" width="25%" ">   
-        <tr> 
-          
-          
-              </tr>
+             <table id="table_req" border ="3"  class="table_req" cellspacing="0" width="40%" >   
+             <tr> 
+             </tr>
+            </table>
+
+
+            
+            <label style="text-align: left;" >
+              <br><br><br><br><br><br>
+            Search for friends
+            </label>
+            <br><br><br><br><br><br><br><br>
+
+            <input type="text" name="txtSearch" class="srch_friends_txt" id ="txtSearch" size="35">
+            <input type="button" name="btnSearch" id="btnSearch" size="35" class="button" value=" SEARCH" onclick="searchFriend()">
+            <br><br>
+
+             <table id="table_send_req" border ="3"  class="table_send_req" cellspacing="0" width="100%" ">   
+             <tr> 
+             </tr>
             </table>
 
           
@@ -104,6 +124,7 @@
     var activeUser = localStorage.getItem("emailid");
     var selectedUser="";
     var rIndex;
+    var surName="";
     findFriend();
     friend_req();
       
@@ -327,6 +348,132 @@ alert("1");
             var response = JSON.parse(xhttp.responseText);
 
             findFriend();
+
+    }
+
+    function searchFriend()
+    {
+      var tbl = document.getElementById("table_send_req");
+      
+      if(tbl.rows.length !=0)
+      {
+        for(var i = 0; i<tbl.rows.length;i++)
+        {
+          tbl.deleteRow(i);
+        }
+        
+      }
+
+        var searchedUser =document.getElementById("txtSearch").value;
+
+            var tables = "member";                               
+            var crit = "`Name` = '" + searchedUser + "'";
+            var method = "GETFIL";
+            var xhttp = new XMLHttpRequest();
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+              apiPath = apiPath2;
+            }
+            xhttp.open(method, "http://localhost/api.php/" + tables, false);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.setRequestHeader("Authorization", "Basic " + btoa(activeUser + ":" + localStorage.getItem("passwordid")));
+            xhttp.send("&*&" + crit);
+            
+            var response = JSON.parse("["+xhttp.responseText+"]");
+            
+          
+          var array=[];
+          for(var i = 0; i < response.length; i++)
+            {
+
+              array[i] = response[i]["Name"] +"allers" ;
+              getSurname(searchedUser);
+        
+            }
+
+          
+              
+               
+                    table = document.getElementById("table_send_req");
+     for(var i = 0; i < array.length; i++)
+               {
+                   // create a new row
+                   var newRow = table.insertRow(table.length);
+                   for(var j = 0; j < 1; j++)
+                   {
+                       // create a new cell
+                       var cell = newRow.insertCell(j);
+                       
+                       // add value to the cell
+                       cell.innerHTML = array[i];
+                   }
+               }
+               //addRequest();
+
+
+        
+    }
+
+    function addRequest()
+    {
+         tb = document.getElementById("table_send_req");
+          for(var i=1;i< tb.rows.length;i++)
+          {
+            
+            tb.rows[i].onclick=function()
+            {
+              rIndex =this.rowIndex;
+              alert(rIndex);
+              selectedUser = tb.rows[rIndex].cells[0].innerHTML;
+              
+              showDialog();
+
+
+
+            };
+
+        }
+    }
+
+    function getSurname(searchedUser)
+    {
+
+         //SELECT * FROM table
+          var table = "member";
+
+
+          //INSERT INTO table (column) VALUES (value)   -> format {'column1' : 'value1', 'column2' : 'value2'}
+          var myArr = {'': ''};
+
+          //SELECT columns FROM table                   -> format "&column1,column2,column3"
+          var columns = "Surname";
+
+          //WHERE crit                                  -> format "&column1=valueA AND column2=valueB"
+          var crit = "`Name` = '" + searchedUser + "'";
+
+          //GET, PUT, POST, DELETE, GETFIL(filter)      -> GET = SELECT * FROM table WHERE ID=key
+          //                                            -> PUT = UPDATE table SET column1=value1, column2=value2... WHERE ID=key
+          //                                            -> POST = INSERT INTO table(column1,column2...) VALUES (value1,value2...)
+          //                                            -> DELETE = DELETE FROM table WHERE ID=key
+          //                                            -> GETFIL = SELECT columns FROM table WHERE crit
+          var method = "GETFIL";
+
+          
+          var xhttp = new XMLHttpRequest();
+          xhttp.open(method, "http://localhost/api.php/" + table , false);
+          xhttp.setRequestHeader("Content-type", "application/json");
+          xhttp.send(JSON.stringify(myArr) +"&"+ columns +"&"+ crit);
+          var response = JSON.parse(xhttp.responseText);
+            
+          
+          var array=[];
+          for(var i = 0; i < response.length; i++)
+            {
+              alert("halo");
+              array[i] = response[i]["Surname"] ;
+              alert(array[i]);
+        
+            }
+
 
     }
 
