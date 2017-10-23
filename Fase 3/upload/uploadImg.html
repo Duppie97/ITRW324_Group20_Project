@@ -3,53 +3,90 @@
 
 	<head>
 		<meta charset="utf-8"/>
-		<title>Upload file</title>
+		<title>Upload an image</title>
 
 		<!-- Google web fonts -->
 		<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
 
 		<!-- The main CSS file -->
 		<link href="assets/css/style.css" rel="stylesheet" />
-		<link href="style.css" rel="stylesheet" />
-		<link rel="stylesheet" href="css/style.css">
+		<link href="assets/css/style.css" rel="stylesheet" />
+
+  
+      <link rel="stylesheet" href="css/style.css">
 	</head>
-
-	<body>
-
-             
-          
+<form action="upload.php" enctype="multipart/form-data" method="post">
+	<body background="img/wbg.png">
 <div class="form">
-
-<h1>Upload an image</h1>
-<br>
 <div class="field-wrap-index">
+<h1>Upload an image</h1>
+            <div class="field-wrap-index">
               <label>
                 Caption
               </label>
               <input type="text" required autocomplete="off" id="caption"/>
             </div>
-          
-
-          <div class="field-wrap-index">
+        <br>
+            <div class="field-wrap-index">
               <label>
                 Tag
               </label>
               <input type="text" required autocomplete="off" id="tag"/>
             </div>
-		<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
-			<div id="drop">
-				Drop Here
+          </div>
+		<body>
 
-				<a>Browse</a>
-				<input type="file" name="upl" multiple id="subImage"/>
-			</div>
 
-			
-<button type="button" class="button button-block-index" name='go' onclick = "upload()" />Get Started</button>
-		</form>
+
+
+
+
+      <div id="drop">
+        
+
+
+        <a>Select a profile picture</a>
+        <p id="imgp">No file selected</p>
+        <input type="file" name="upl" id="subImage" accept="image/*"/>
+      </div>
+    <ul>
+				<!-- The file uploads will be shown here -->
+			</ul>
+
+  </body>
+
+           
+                
+            <!-- JavaScript Includes -->
+            
+
+
+    <!-- Only used for the demos. Please ignore and remove. --> 
+        </div>
+
+		  
+          <button type="submit" class="button button-block-index" name='go' onclick = "upload()" />Get Started</button>
+
+        
+          </form>
+
+        </div>
 
 		
-     </div>   
+			
+
+		
+		<br>
+<button type="button" class="button button-block-index2" name='go' align="middle" onclick = "upload()" />Upload</button>
+<br>
+<br>
+
+	</div>
+	<br>
+<br>
+<br>
+<br>	
+    </body></form>   
 		<!-- JavaScript Includes -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="assets/js/jquery.knob.js"></script>
@@ -61,12 +98,11 @@
 		
 		<!-- Our main JS file -->
 		<script src="assets/js/script.js"></script>
-		<script src></script>>
+		<script src="uploadImg.js"></script>
 
 
 		<!-- Only used for the demos. Please ignore and remove. --> 
         <script src="http://cdn.tutorialzine.com/misc/enhance/v1.js" async></script>
-        <script src="uploadImg.js"></script>
 
 	</body>
 </html>
