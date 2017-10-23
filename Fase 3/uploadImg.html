@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Upload an image</title>
+
+		<!-- Google web fonts -->
+		<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+
+		<!-- The main CSS file -->
+		<link href="assets/css/style.css" rel="stylesheet" />
+		<link href="assets/css/style.css" rel="stylesheet" />
+
+  
+      <link rel="stylesheet" href="css/style.css">
+	</head>
+<form enctype="multipart/form-data" method="post">
+	<body background="img/wbg.png">
+<div class="form">
+<div class="field-wrap-index">
+<h1>Upload an image</h1>
+            <div class="field-wrap-index">
+              <label>
+                Caption
+              </label>
+              <input type="text" required autocomplete="off" id="caption"/>
+            </div>
+        <br>
+            <div class="field-wrap-index">
+              <label>
+                Tag
+              </label>
+              <input type="text" required autocomplete="off" id="tag"/>
+            </div>
+          </div>
+		<body>
+
+
+
+
+
+
+      <div id="drop">
+        
+
+
+        <a>Select an image to upload</a>
+        <p id="imgp">No file selected</p>
+        <input type="file" name="upl" id="subImage" accept="image/*"/>
+      </div>
+    <ul>
+				<!-- The file uploads will be shown here -->
+			</ul>
+
+  </body>
+
+		
+			
+
+		
+		<br>
+<button type="button" class="button button-block-index2" name='go' align="middle" onclick = "upload()" />Upload</button>
+<br>
+<br>
+
+	</div>
+	<br>
+<br>
+<br>
+<br>	
+    </body></form>   
+		<!-- JavaScript Includes -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="assets/js/jquery.knob.js"></script>
+
+		<!-- jQuery File Upload Dependencies -->
+		<script src="assets/js/jquery.ui.widget.js"></script>
+		<script src="assets/js/jquery.iframe-transport.js"></script>
+		<script src="assets/js/jquery.fileupload.js"></script>
+		
+		<!-- Our main JS file -->
+		<script src="assets/js/script.js"></script>
+		<script src="uploadImg.js"></script>
+
+
+		<!-- Only used for the demos. Please ignore and remove. --> 
+        <script src="http://cdn.tutorialzine.com/misc/enhance/v1.js" async></script>
+
+	</body>
+</html>

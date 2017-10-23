@@ -96,3 +96,4 @@ function joinScreen()
 
 	window.location = 'http://localhost/session';
 }
+
