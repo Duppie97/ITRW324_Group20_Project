@@ -1,1 +1,1 @@
-select * from `uploads` WHERE `Email` = 'a@gg'
+select * from `requests` WHERE `requestee` = 'jacovanzyl@gmail.com'AND`status` = 'PENDING'

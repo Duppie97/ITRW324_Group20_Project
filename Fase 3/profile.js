@@ -10,7 +10,7 @@ var memberEmail;
 
 function loadProfile()
 {
-localStorage.setItem("emailid","a@gg");
+
 	memberEmail = getUrlVars()["email"];
 
 	if(memberEmail == localStorage.getItem("emailid"))

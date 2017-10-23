@@ -171,6 +171,7 @@
                        
                        // add value to the cell
                        cell.innerHTML = array[i];
+                       cell.setAttribute('onclick','navigate("'+ array[i] +'")');
                    }
                }
 
@@ -179,7 +180,7 @@
 
       function friend_req()
       {
-
+          var name ="";
           var status ="PENDING";
           var tables = "requests";                               
             var crit = "`requestee` = '" + activeUser + "'" +"AND" +"`status` = '"+ status + "'";
@@ -237,7 +238,7 @@
           tb.rows[i].onclick=function()
           {
             rIndex =this.rowIndex;
-           alert(rIndex);
+          
             selectedUser = tb.rows[rIndex].cells[0].innerHTML;
             
             showDialog();
@@ -253,7 +254,7 @@
         dlgHide();
         alert("friend has been declined");
         
-        alert(selectedUser);
+        
         dltReq(selectedUser);
         //Remove request from request table
 
@@ -285,7 +286,7 @@
 
     function dltReq(slUser)
     {
-      alert(slUser);
+      
          //SELECT * FROM table
             var table = "requests";
 
@@ -318,7 +319,7 @@
     function addFriend(slUser)
     {
        var table = "friends";
-       alert(activeUser + " "+ slUser);
+       
 
 
 
@@ -337,14 +338,14 @@
             //                                            -> DELETE = DELETE FROM table WHERE ID=key
             //                                            -> GETFIL = SELECT columns FROM table WHERE crit
             var method = "POST";
-alert("1");
+
             var xhttp = new XMLHttpRequest();
             xhttp.open(method, "http://localhost/api.php/" + table , false);
-            alert("2");
+            
             xhttp.setRequestHeader("Content-type", "application/json");
-            alert("3");
+            
             xhttp.send(JSON.stringify(myArr) +"&"+ columns +"&");
-            alert(xhttp.responseText);
+            
             var response = JSON.parse(xhttp.responseText);
 
             findFriend();
@@ -365,6 +366,8 @@ alert("1");
       }
 
         var searchedUser =document.getElementById("txtSearch").value;
+        getSurname(searchedUser);
+
 
             var tables = "member";                               
             var crit = "`Name` = '" + searchedUser + "'";
@@ -382,11 +385,13 @@ alert("1");
             
           
           var array=[];
+          var earray = [];
           for(var i = 0; i < response.length; i++)
             {
 
-              array[i] = response[i]["Name"] +"allers" ;
-              getSurname(searchedUser);
+              name = response[i]["Name"];
+              array[i] = response[i]["Name"] +" "+response[i]["Surname"] + " : " + response[i]["Email"];
+              earray[i] = response[i]["Email"];
         
             }
 
@@ -405,15 +410,53 @@ alert("1");
                        
                        // add value to the cell
                        cell.innerHTML = array[i];
+                       cell.setAttribute('onclick','navs("'+ earray[i] +'")');
                    }
                }
-               //addRequest();
 
 
+               for(var i=1;i< table.rows.length;i++)
+              {
+                
+                table.rows[i].onclick=function() 
+                {
+                  rIndex =this.rowIndex;
+                  name = table.rows[rIndex].cells[0].innerHTML;
+                  
+                }
+
+             }
+
+
+             var newRow = table.insertRow(table.length);
+             newRow.setAttribute('onclick','getNameEmail()');
+  }
+
+  function navigate(txt)
+      {
+        window.location.href="profile?email=" +txt;
+      }
+    
+
+function navs(txt)
+      {
+
+         var table = "requests";
+        var myArr = {'requester': localStorage.getItem("emailid"), 'requestee': txt};
+       
+        var method = "POST";
+        var xhttp = new XMLHttpRequest();
+        xhttp.open(method, "http://localhost/api.php/" + table , false);
+       
+        xhttp.setRequestHeader("Content-type", "application/json");
         
-    }
+        xhttp.setRequestHeader("Authorization", "Basic " + btoa(localStorage.getItem("emailid") + ":" + localStorage.getItem("passwordid")));
+        
+        xhttp.send(JSON.stringify(myArr));
+alert("Request sent");
 
-    function addRequest()
+      }
+    /*function addRequest()
     {
          tb = document.getElementById("table_send_req");
           for(var i=1;i< tb.rows.length;i++)
@@ -431,12 +474,13 @@ alert("1");
 
             };
 
-        }
-    }
+        }*/
+    
 
     function getSurname(searchedUser)
     {
 
+       
          //SELECT * FROM table
           var table = "member";
 
@@ -462,19 +506,39 @@ alert("1");
           xhttp.open(method, "http://localhost/api.php/" + table , false);
           xhttp.setRequestHeader("Content-type", "application/json");
           xhttp.send(JSON.stringify(myArr) +"&"+ columns +"&"+ crit);
-          var response = JSON.parse(xhttp.responseText);
+          
+          var response = JSON.parse("["+xhttp.responseText+"]");
             
           
           var array=[];
-          for(var i = 0; i < response.length; i++)
+         
+         for(var i = 0; i < response.length; i++)
             {
-              alert("halo");
-              array[i] = response[i]["Surname"] ;
-              alert(array[i]);
+              
+              array[i] = response[i]["Surname"]  ;
+              surName = array[i];
+             
         
             }
 
 
+    }
+
+    function getNameEmail()
+    {
+
+
+
+
+
+      
+       
+            
+            
+
+
+
+        
     }
 
 

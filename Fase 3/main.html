@@ -21,21 +21,26 @@
 
 <body background="img/wbg.png" onload="populateSelect()">
 
-<div id= "nav" class ="Menu">
-  <div id = "nav_wrapper2">
-  <ul>
-            <li class = mn><a>Menu</a>
-                <ul>
-                  <li><a>Profile</a></li>
-                  <li><a>Friends</a></li>
-                  <li><a>Messages</a></li>
-                  <li><a>Logout</a></li>
+ <nav class="nav_wrapper2">
+   <ul >
+            <li ><a>Menu</a>
+                <ul >
+                  <li style="font-weight: bold;" ><a onclick="prof()">Profile</a></li>
+                  <script type="text/javascript">
+                    function prof()
+                    {
+                      window.location.href="profile?email=" + localStorage.getItem("emailid");
+                    }
+                  </script>
+                  <li  style="font-weight: bold;"><a href ="friends">Friends</a></li>
+                  <li style="font-weight: bold;"><a href = "messages">Messages</a></li>
+                  <li style="font-weight: bold;"><a href="">Logout</a></li>
                 </ul>
             </li>
             
           </ul>
-  </div>        
-</div>
+   
+ </nav>
 
   <div class="form">
         <div id="join">   
