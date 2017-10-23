@@ -26,7 +26,7 @@ var table = "member";
             xhttp.open(method, "http://localhost/api.php/" + table  , false);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send("&*" +columns + crit);
-            alert(xhttp.responseText);
+
 			var response = "[" + xhttp.responseText + "]";
 			var responses = JSON.parse(xhttp.responseText);
             var count = responses["Total_Sessions"];
@@ -96,3 +96,4 @@ function joinScreen()
 
 	window.location = 'http://localhost/session';
 }
+

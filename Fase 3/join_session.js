@@ -23,11 +23,12 @@ function filter()
 {
     var e = document.getElementById("filter_choice");
     var strUser = e.options[e.selectedIndex].value;
-    fill( strUser + " LIKE '%" + document.getElementById("filter_answer").value + "%'");
+    fill( "`" +strUser + "` LIKE '%" + document.getElementById("filter_answer").value + "%'");
 }
 
 function fill(criteria)
 {
+
     mytable = document.getElementById("table");
     while(mytable.rows.length > 1) {
         mytable.deleteRow(1);
@@ -42,6 +43,8 @@ function fill(criteria)
       var columns = "*";
       var crit =  criteria;
       var method = "GET";
+      if(criteria != "")
+        method = "GETFIL";
       if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         apiPath = apiPath2;
         }
@@ -52,10 +55,14 @@ function fill(criteria)
       xhttp.send('&' + columns + '&' + crit);
 
       if(xhttp.responseText != '')
+        if(xhttp.responseText.substring(0,1)=="[")
         var res = JSON.parse(xhttp.responseText);
+      else
+        var res = JSON.parse("[" + xhttp.responseText + "]");
 
     for(var i = 0; i < res.length; i++)
     {
+
 
       arr[i] = res[i]["Room_ID"];
 
@@ -66,6 +73,8 @@ var table = "create_session";
       var columns = "*";
       var crit = criteria;
       var method = "GET";
+      if(criteria != "")
+        method = "GETFIL";
           if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             apiPath = apiPath2;
           }
@@ -74,16 +83,24 @@ var table = "create_session";
       xhttp.open(method, apiPath + table + key , false);
       xhttp.setRequestHeader("Content-type", "application/json");
       xhttp.send(JSON.stringify(myArr) + '&' + columns + '&' + crit);
-    var o = JSON.parse(xhttp.responseText);
+      if(xhttp.responseText.substring(0,1)=="[")
+        var o = JSON.parse(xhttp.responseText);
+      else
+        var o = JSON.parse("[" + xhttp.responseText + "]");
  
+ 
+
     for(var k = 0; k < o.length; k++)
     {
+      
       var table = "create_session";
       var key = "";
       var myArr = null;
       var columns = "*";
       var crit = criteria;
       var method = "GET";
+      if(criteria != "")
+        method = "GETFIL";
           if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             apiPath = apiPath2;
           }
@@ -95,7 +112,11 @@ var table = "create_session";
       
       if(xhttp.responseText != "")
       {
+        if(xhttp.responseText.substring(0,1)=="[")
         var res2 = JSON.parse(xhttp.responseText);
+      else
+        var res2 = JSON.parse("[" + xhttp.responseText + "]");
+ 
         var row = mytable.insertRow(k+1);
         var cel1 = row.insertCell(0);
         var cel2 = row.insertCell(1);
@@ -136,6 +157,7 @@ var table = "create_session";
 
         cel3.innerHTML = instrumentList;
       }
+
       
 
         

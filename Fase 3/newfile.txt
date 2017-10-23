@@ -1,1 +1,1 @@
-update `member` set `Current_Inst`="microphone" where `Email` = 'a@qqq'
+select * from `uploads` WHERE `Email` = 'a@gg'

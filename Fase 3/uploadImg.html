@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Upload file</title>
+
+		<!-- Google web fonts -->
+		<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+
+		<!-- The main CSS file -->
+		<link href="assets/css/style.css" rel="stylesheet" />
+		<link href="style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body>
+
+             
+          
+<div class="form">
+
+<h1>Upload an image</h1>
+<br>
+<div class="field-wrap-index">
+              <label>
+                Caption
+              </label>
+              <input type="text" required autocomplete="off" id="caption"/>
+            </div>
+          
+
+          <div class="field-wrap-index">
+              <label>
+                Tag
+              </label>
+              <input type="text" required autocomplete="off" id="tag"/>
+            </div>
+		<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+			<div id="drop">
+				Drop Here
+
+				<a>Browse</a>
+				<input type="file" name="upl" multiple id="subImage"/>
+			</div>
+
+			
+<button type="button" class="button button-block-index" name='go' onclick = "upload()" />Get Started</button>
+		</form>
+
+		
+     </div>   
+		<!-- JavaScript Includes -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="assets/js/jquery.knob.js"></script>
+
+		<!-- jQuery File Upload Dependencies -->
+		<script src="assets/js/jquery.ui.widget.js"></script>
+		<script src="assets/js/jquery.iframe-transport.js"></script>
+		<script src="assets/js/jquery.fileupload.js"></script>
+		
+		<!-- Our main JS file -->
+		<script src="assets/js/script.js"></script>
+		<script src></script>>
+
+
+		<!-- Only used for the demos. Please ignore and remove. --> 
+        <script src="http://cdn.tutorialzine.com/misc/enhance/v1.js" async></script>
+        <script src="uploadImg.js"></script>
+
+	</body>
+</html>

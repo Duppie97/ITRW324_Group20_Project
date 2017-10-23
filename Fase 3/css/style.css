@@ -30,8 +30,29 @@ a:hover {
   max-width: 1000px;
   margin: 40px auto;
   border-radius: 4px;
+  box-shadow: 0 4px 10px 4px black;
+}
+
+.form2 {
+  background: rgb(90,60,109);
+  padding: 80px;
+  max-width: 1000px;
+  margin: 40px auto;
+  border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 1.0);
 }
+
+.form3 {
+  background: lightgray;
+  padding: 80px;
+  padding-top: 20px;
+  padding-bottom: : 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgb(26,177,136);
+}
+
 
 .form-index {
   background: rgba(50, 2, 47, 1.0);
@@ -189,7 +210,7 @@ textarea {
   border: 0;
   outline: none;
   border-radius: 10;
-  padding: 20;
+  padding: 20px;
   font-size: 2rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -262,6 +283,13 @@ border: 0;
   .button-block-index {
   display: block;
   width: 50%;}
+
+  .button-block-index2 {
+  display: block;
+  width: 50%;
+  position: absolute;
+    left: 25%;
+}
 
   .button-block-create {
   display: block;
