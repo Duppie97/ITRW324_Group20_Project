@@ -34,9 +34,20 @@ a:hover {
 }
 
 .form2 {
-  background: rgb(151,154,170);
+  background: rgb(90,60,109);
   padding: 80px;
   max-width: 1000px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 1.0);
+}
+
+.form3 {
+  background: lightgray;
+  padding: 80px;
+  padding-top: 20px;
+  padding-bottom: : 20px;
+  max-width: 800px;
   margin: 40px auto;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 1.0);
