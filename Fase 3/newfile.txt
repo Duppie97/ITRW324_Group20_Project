@@ -1,1 +1,1 @@
-select * from `uploads` WHERE `Email` = ''
+select * from `session_instruments` WHERE `Room_ID`='967a@qqq'
